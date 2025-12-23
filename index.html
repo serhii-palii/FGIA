@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Festival & Grant Intelligence Assistant - Find the right European film funds for your project"
+    />
+    <title>Festival & Grant Intelligence Assistant</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="site-header">
+      <div class="container">
+        <h1 class="site-title">Festival & Grant Intelligence Assistant</h1>
+        <p class="site-description">
+          Discover European film funds and grants tailored to your project
+        </p>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="container">
+        <!-- Application Form -->
+        <section class="form-section">
+          <form id="recommendationForm" class="recommendation-form">
+            <!-- Project Stage Field -->
+            <div class="form-group">
+              <label for="projectStage">Project Stage</label>
+              <select id="projectStage" name="projectStage" required>
+                <option value="">Select project stage</option>
+              </select>
+              <small class="helper-text"
+                >Current development phase of your film project</small
+              >
+            </div>
+
+            <!-- Project Type Field -->
+            <div class="form-group">
+              <label for="projectType">Project Type</label>
+              <select id="projectType" name="projectType" required>
+                <option value="">Select project type</option>
+              </select>
+              <small class="helper-text"
+                >Format and category of your production</small
+              >
+            </div>
+
+            <!-- Nationality Field -->
+            <div class="form-group">
+              <label for="nationality">Nationality</label>
+              <select id="nationality" name="nationality" required>
+                <option value="">Select nationality</option>
+              </select>
+              <small class="helper-text"
+                >Primary country of production or co-production</small
+              >
+            </div>
+
+            <!-- Genre Field -->
+            <div class="form-group">
+              <label for="genre">Genre</label>
+              <select id="genre" name="genre" required>
+                <option value="">Select genre</option>
+              </select>
+              <small class="helper-text"
+                >Primary genre or thematic category</small
+              >
+            </div>
+
+            <!-- Language Field -->
+            <div class="form-group">
+              <label for="language">Language</label>
+              <select id="language" name="language" required>
+                <option value="">Select language</option>
+              </select>
+              <small class="helper-text">Primary language of the project</small>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-button">
+              Get Recommendations
+            </button>
+          </form>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section" id="resultsSection">
+          <div class="results-placeholder" id="resultsPlaceholder">
+            <p>
+              Complete the form above to receive personalized fund
+              recommendations for your project.
+            </p>
+          </div>
+
+          <!-- Loading State -->
+          <div class="loading-state hidden" id="loadingState">
+            <div class="loading-spinner"></div>
+            <p>Analyzing your project and matching with relevant funds...</p>
+          </div>
+
+          <!-- Results Container -->
+          <div class="results-container hidden" id="resultsContainer">
+            <!-- Results will be dynamically inserted here -->
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <p class="disclaimer">
+          <strong>Disclaimer:</strong> This tool provides guidance based on
+          general criteria. Recommendations are not guarantees of eligibility or
+          success. Always verify specific requirements and deadlines on official
+          fund websites.
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
