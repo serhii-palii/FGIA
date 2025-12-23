@@ -121,7 +121,7 @@ const UI_TEXT = {
 
   ua: {
     // Ukrainian translations
-    title: "Асистент розвідки фестивалів та грантів",
+    title: "Асистент пошуку фестивалів та грантів",
     description: "Знайдіть європейські кіно-фонди та гранти для вашого проєкту",
 
     navFunds: "Фонди",
@@ -580,6 +580,16 @@ let formElements = {};
 let resultElements = {};
 
 /* ===================================
+   Global State
+   =================================== */
+let favorites = [];
+let allRecommendations = [];
+let currentFilter = "all";
+let currentLanguage = "en";
+
+const STORAGE_KEY = "fgia_favorites";
+
+/* ===================================
    Initialize Application
    =================================== */
 function initializeApp() {
@@ -591,6 +601,13 @@ function initializeApp() {
 
   // Attach event listeners
   attachEventListeners();
+
+  // Initialize new features
+  initBurgerMenu();
+  initLanguageSwitcher();
+  initSearch();
+  initFavorites();
+  initFilters();
 }
 
 /* ===================================
@@ -654,7 +671,7 @@ function handleFormSubmit(event) {
   // Simulate AI processing with delay
   setTimeout(() => {
     const recommendations = generateRecommendations(formData);
-    displayResults(recommendations);
+    displayResultsWithFavorites(recommendations);
   }, 2000);
 }
 
@@ -682,7 +699,6 @@ function showLoading() {
 
 /* ===================================
    Generate Mock Recommendations
-   This simulates AI logic - can be replaced with real API later
    =================================== */
 function generateRecommendations(formData) {
   const recommendations = [];
@@ -713,54 +729,67 @@ function generateRecommendations(formData) {
   // Sort by match score (highest first)
   recommendations.sort((a, b) => b.matchScore - a.matchScore);
 
-  // Return top 3 recommendations
-  return recommendations.slice(0, 3);
+  // Return top 5 recommendations
+  return recommendations.slice(0, 5);
 }
 
 /* ===================================
-   Display Results
+   Display Results with Favorites
    =================================== */
-function displayResults(recommendations) {
-  // Hide loading
+function displayResultsWithFavorites(recommendations) {
+  allRecommendations = recommendations;
   resultElements.loading.classList.add("hidden");
 
-  // Clear previous results
+  const filterSection = document.getElementById("filterSection");
+  if (filterSection) filterSection.classList.remove("hidden");
+
   resultElements.container.innerHTML = "";
 
-  // Check if we have recommendations
   if (recommendations.length === 0) {
     resultElements.container.innerHTML = `
             <div class="results-placeholder">
-                <p>${UI_TEXT.en.noResults}</p>
+                <p>${UI_TEXT[currentLanguage].noResults}</p>
             </div>
         `;
   } else {
-    // Create result cards
     recommendations.forEach((recommendation) => {
-      const card = createResultCard(recommendation);
+      const card = createResultCardWithSave(recommendation);
       resultElements.container.appendChild(card);
     });
   }
 
-  // Show results
   resultElements.container.classList.remove("hidden");
+
+  // Show export button if favorites exist
+  if (favorites.length > 0) {
+    initExportPDF();
+  }
 }
 
 /* ===================================
-   Create Result Card Element
+   Create Result Card with Save Button
    =================================== */
-function createResultCard(recommendation) {
-  // Create card container
+function createResultCardWithSave(recommendation) {
   const card = document.createElement("div");
   card.className = "result-card";
 
-  // Determine deadline badge class
   const deadlineClass = `deadline-${recommendation.urgency}`;
   const deadlineText =
-    recommendation.urgency.charAt(0).toUpperCase() +
-    recommendation.urgency.slice(1);
+    UI_TEXT[currentLanguage][recommendation.urgency] || recommendation.urgency;
+  const isSaved = isFavorite(recommendation.name);
+  const saveButtonText = isSaved
+    ? UI_TEXT[currentLanguage].removeFavorite
+    : UI_TEXT[currentLanguage].saveButton;
+  const saveButtonClass = isSaved ? "saved" : "";
 
-  // Build card HTML
+  // Mock deadline for calendar (2026)
+  const mockDeadlines = {
+    urgent: "2026-03-31",
+    moderate: "2026-06-30",
+    flexible: "2026-09-30",
+  };
+  const deadline = mockDeadlines[recommendation.urgency];
+
   card.innerHTML = `
         <div class="result-header">
             <h3 class="fund-name">${recommendation.name}</h3>
@@ -768,26 +797,54 @@ function createResultCard(recommendation) {
         </div>
         <div class="result-content">
             <div class="result-section">
-                <div class="result-label">${UI_TEXT.en.matchReason}:</div>
+                <div class="result-label">${UI_TEXT[currentLanguage].matchReason}:</div>
                 <p class="result-text">${recommendation.reason}</p>
             </div>
         </div>
+        <div style="display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap;">
+            <button class="save-favorite-btn ${saveButtonClass}" data-fund-name="${recommendation.name}">
+                ${saveButtonText}
+            </button>
+            <button class="calendar-btn" data-fund-name="${recommendation.name}" data-deadline="${deadline}" style="padding: 6px 12px; font-size: 0.875rem; background-color: transparent; color: var(--color-accent); border: 1px solid var(--color-accent); border-radius: 8px; cursor: pointer; transition: all 0.2s ease;">
+                📅 Add to Calendar
+            </button>
+        </div>
     `;
+
+  // Save button event listener
+  const saveBtn = card.querySelector(".save-favorite-btn");
+  saveBtn.addEventListener("click", () => {
+    if (isFavorite(recommendation.name)) {
+      removeFromFavorites(recommendation.name);
+    } else {
+      addToFavorites(recommendation);
+      saveBtn.textContent = UI_TEXT[currentLanguage].removeFavorite;
+      saveBtn.classList.add("saved");
+    }
+  });
+
+  // Calendar button event listener
+  const calendarBtn = card.querySelector(".calendar-btn");
+  calendarBtn.addEventListener("click", () => {
+    addToGoogleCalendar(recommendation.name, deadline);
+  });
+
+  calendarBtn.addEventListener("mouseenter", function () {
+    this.style.backgroundColor = "var(--color-accent)";
+    this.style.color = "white";
+  });
+
+  calendarBtn.addEventListener("mouseleave", function () {
+    this.style.backgroundColor = "transparent";
+    this.style.color = "var(--color-accent)";
+  });
 
   return card;
 }
 
 /* ===================================
-   Start Application
-   =================================== */
-// Wait for DOM to be fully loaded
-document.addEventListener("DOMContentLoaded", initializeApp);
-
-/* ===================================
    Navigation Functionality
    =================================== */
-
-// Burger Menu Toggle
 function initBurgerMenu() {
   const burgerMenu = document.getElementById("burgerMenu");
   const navLinks = document.getElementById("navLinks");
@@ -818,55 +875,137 @@ function initBurgerMenu() {
 }
 
 /* ===================================
-   Language Switcher
+   Language Switcher - Dropdown
    =================================== */
-let currentLanguage = "en";
-
 function initLanguageSwitcher() {
-  const langButtons = document.querySelectorAll(".lang-button");
+  const dropdownBtn = document.getElementById("langDropdownBtn");
+  const dropdownContent = document.getElementById("langDropdownContent");
+  const currentLangSpan = document.getElementById("currentLang");
+  const langItems = document.querySelectorAll(".dropdown-item");
 
-  langButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      // Remove active from all buttons
-      langButtons.forEach((btn) => btn.classList.remove("active"));
+  if (!dropdownBtn || !dropdownContent) return;
 
-      // Add active to clicked button
-      button.classList.add("active");
+  // Toggle dropdown
+  dropdownBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    dropdownBtn.classList.toggle("active");
+    dropdownContent.classList.toggle("show");
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", () => {
+    dropdownBtn.classList.remove("active");
+    dropdownContent.classList.remove("show");
+  });
+
+  // Prevent closing when clicking inside dropdown
+  dropdownContent.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  // Handle language selection
+  langItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      // Remove active from all items
+      langItems.forEach((i) => i.classList.remove("active"));
+
+      // Add active to clicked item
+      item.classList.add("active");
 
       // Get selected language
-      currentLanguage = button.getAttribute("data-lang");
+      currentLanguage = item.getAttribute("data-lang");
+      const langLabel = item.getAttribute("data-label");
+
+      // Update button text
+      currentLangSpan.textContent = langLabel;
+
+      // Close dropdown
+      dropdownBtn.classList.remove("active");
+      dropdownContent.classList.remove("show");
 
       // Update UI text
       updateUILanguage(currentLanguage);
+
+      // Update existing results if any
+      const resultsContainer = document.getElementById("resultsContainer");
+      if (
+        resultsContainer &&
+        !resultsContainer.classList.contains("hidden") &&
+        allRecommendations.length > 0
+      ) {
+        displayResultsWithFavorites(allRecommendations);
+      }
+
+      // Update favorites if any
+      if (favorites.length > 0) {
+        renderFavorites();
+      }
     });
   });
 }
 
 function updateUILanguage(lang) {
-  // Update all text based on selected language
-  // This will be used throughout the app
-  console.log("Language switched to:", lang);
-
-  // Update page title
-  document.querySelector(".site-title").textContent = UI_TEXT[lang].title;
-  document.querySelector(".site-description").textContent =
-    UI_TEXT[lang].description;
+  // Update page title and description
+  const title = document.querySelector(".site-title");
+  const description = document.querySelector(".site-description");
+  if (title) title.textContent = UI_TEXT[lang].title;
+  if (description) description.textContent = UI_TEXT[lang].description;
 
   // Update form labels
-  document.querySelector('label[for="projectStage"]').textContent =
-    UI_TEXT[lang].projectStage;
-  document.querySelector('label[for="projectType"]').textContent =
-    UI_TEXT[lang].projectType;
-  document.querySelector('label[for="nationality"]').textContent =
-    UI_TEXT[lang].nationality;
-  document.querySelector('label[for="genre"]').textContent =
-    UI_TEXT[lang].genre;
-  document.querySelector('label[for="language"]').textContent =
-    UI_TEXT[lang].language;
+  const labels = {
+    projectStage: 'label[for="projectStage"]',
+    projectType: 'label[for="projectType"]',
+    nationality: 'label[for="nationality"]',
+    genre: 'label[for="genre"]',
+    language: 'label[for="language"]',
+  };
+
+  Object.keys(labels).forEach((key) => {
+    const label = document.querySelector(labels[key]);
+    if (label) label.textContent = UI_TEXT[lang][key];
+  });
+
+  // Update helper texts
+  const helpers = document.querySelectorAll(".helper-text");
+  const helperKeys = [
+    "helperProjectStage",
+    "helperProjectType",
+    "helperNationality",
+    "helperGenre",
+    "helperLanguage",
+  ];
+  helpers.forEach((helper, index) => {
+    if (helperKeys[index]) {
+      helper.textContent = UI_TEXT[lang][helperKeys[index]];
+    }
+  });
+
+  // Update placeholders
+  const selects = {
+    projectStage: "placeholderProjectStage",
+    projectType: "placeholderProjectType",
+    nationality: "placeholderNationality",
+    genre: "placeholderGenre",
+    language: "placeholderLanguage",
+  };
+
+  Object.keys(selects).forEach((key) => {
+    const select = document.getElementById(key);
+    if (select && select.options[0]) {
+      select.options[0].textContent = UI_TEXT[lang][selects[key]];
+    }
+  });
 
   // Update button text
-  document.querySelector(".submit-button").textContent =
-    UI_TEXT[lang].submitButton;
+  const submitBtn = document.querySelector(".submit-button");
+  if (submitBtn) submitBtn.textContent = UI_TEXT[lang].submitButton;
+
+  // Update placeholder text
+  const placeholder = document.getElementById("resultsPlaceholder");
+  if (placeholder) {
+    const p = placeholder.querySelector("p");
+    if (p) p.textContent = UI_TEXT[lang].placeholderText;
+  }
 }
 
 /* ===================================
@@ -877,68 +1016,131 @@ function initSearch() {
 
   if (searchInput) {
     searchInput.addEventListener("input", (e) => {
-      const searchTerm = e.target.value.toLowerCase();
-      console.log("Searching for:", searchTerm);
-      // Search functionality will be implemented later
+      const searchTerm = e.target.value.toLowerCase().trim();
+
+      if (searchTerm.length === 0) {
+        // Clear search - show placeholder
+        resultElements.container.classList.add("hidden");
+        resultElements.placeholder.classList.remove("hidden");
+        const filterSection = document.getElementById("filterSection");
+        if (filterSection) filterSection.classList.add("hidden");
+        return;
+      }
+
+      if (searchTerm.length < 2) return;
+
+      // Filter funds by search term
+      const filteredFunds = MOCK_FUNDS.filter(
+        (fund) =>
+          fund.name.toLowerCase().includes(searchTerm) ||
+          fund.reason.toLowerCase().includes(searchTerm) ||
+          fund.matchCriteria.some((criteria) => criteria.includes(searchTerm))
+      );
+
+      // Display filtered results
+      if (filteredFunds.length > 0) {
+        resultElements.placeholder.classList.add("hidden");
+        const filterSection = document.getElementById("filterSection");
+        if (filterSection) filterSection.classList.remove("hidden");
+        displayResultsWithFavorites(filteredFunds);
+      } else {
+        resultElements.container.innerHTML = `
+                    <div class="results-placeholder">
+                        <p>No funds found for "${searchTerm}". Try different keywords.</p>
+                    </div>
+                `;
+        resultElements.container.classList.remove("hidden");
+        resultElements.placeholder.classList.add("hidden");
+      }
     });
   }
 }
 
 /* ===================================
-   Update Initialization with All Features
-   =================================== */
-const originalInit = initializeApp;
-
-initializeApp = function () {
-  originalInit();
-  initBurgerMenu();
-  initLanguageSwitcher();
-  initSearch();
-  initFavorites();
-  initFilters();
-};
-
-/* ===================================
    Favorites Management
    =================================== */
-let favorites = [];
-let allRecommendations = [];
-let currentFilter = "all";
-
 function initFavorites() {
-  // Load favorites from browser storage (memory only, no localStorage)
-  favorites = [];
+  loadFavoritesFromStorage();
   renderFavorites();
 
-  // Clear all favorites button
   const clearBtn = document.getElementById("clearFavoritesBtn");
   if (clearBtn) {
     clearBtn.addEventListener("click", clearAllFavorites);
   }
 }
 
+function loadFavoritesFromStorage() {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      favorites = JSON.parse(stored);
+    }
+  } catch (error) {
+    console.error("Error loading favorites:", error);
+    favorites = [];
+  }
+}
+
+function saveFavoritesToStorage() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
+  } catch (error) {
+    console.error("Error saving favorites:", error);
+  }
+}
+
 function addToFavorites(fund) {
-  // Check if already in favorites
   const exists = favorites.find((f) => f.name === fund.name);
 
   if (!exists) {
     favorites.push(fund);
+    saveFavoritesToStorage();
     renderFavorites();
     showNotification(UI_TEXT[currentLanguage].favoriteAdded);
+    initExportPDF();
+    return true;
   }
+  return false;
 }
 
 function removeFromFavorites(fundName) {
   favorites = favorites.filter((f) => f.name !== fundName);
+  saveFavoritesToStorage();
   renderFavorites();
+  updateAllSaveButtons();
   showNotification(UI_TEXT[currentLanguage].favoriteRemoved);
 }
 
 function clearAllFavorites() {
-  if (confirm("Are you sure you want to clear all favorites?")) {
+  const confirmMsg =
+    currentLanguage === "es"
+      ? "¿Estás seguro de que quieres borrar todos los favoritos?"
+      : currentLanguage === "ua"
+      ? "Ви впевнені, що хочете видалити всі обрані фонди?"
+      : "Are you sure you want to clear all favorites?";
+
+  if (confirm(confirmMsg)) {
     favorites = [];
+    saveFavoritesToStorage();
     renderFavorites();
+    updateAllSaveButtons();
   }
+}
+
+function updateAllSaveButtons() {
+  const saveButtons = document.querySelectorAll(".save-favorite-btn");
+  saveButtons.forEach((btn) => {
+    const fundName = btn.getAttribute("data-fund-name");
+    const isSaved = isFavorite(fundName);
+
+    if (isSaved) {
+      btn.textContent = UI_TEXT[currentLanguage].removeFavorite;
+      btn.classList.add("saved");
+    } else {
+      btn.textContent = UI_TEXT[currentLanguage].saveButton;
+      btn.classList.remove("saved");
+    }
+  });
 }
 
 function renderFavorites() {
@@ -971,10 +1173,12 @@ function createFavoriteItem(fund) {
   const deadlineText = UI_TEXT[currentLanguage][fund.urgency] || fund.urgency;
 
   item.innerHTML = `
-        <button class="favorite-remove-btn" data-fund="${fund.name}" aria-label="Remove from favorites">✕</button>
         <div class="result-header">
             <h3 class="fund-name">${fund.name}</h3>
-            <span class="deadline-badge ${deadlineClass}">${deadlineText}</span>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="deadline-badge ${deadlineClass}">${deadlineText}</span>
+                <button class="favorite-remove-btn" data-fund="${fund.name}" aria-label="Remove from favorites">✕</button>
+            </div>
         </div>
         <div class="result-content">
             <div class="result-section">
@@ -984,7 +1188,6 @@ function createFavoriteItem(fund) {
         </div>
     `;
 
-  // Add remove event listener
   const removeBtn = item.querySelector(".favorite-remove-btn");
   removeBtn.addEventListener("click", () => {
     removeFromFavorites(fund.name);
@@ -1005,49 +1208,132 @@ function initFilters() {
 
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      // Remove active from all buttons
       filterButtons.forEach((btn) => btn.classList.remove("active"));
-
-      // Add active to clicked button
       button.classList.add("active");
-
-      // Get filter value
       currentFilter = button.getAttribute("data-filter");
-
-      // Apply filter
       applyFilter(currentFilter);
     });
   });
 }
 
 function applyFilter(filter) {
-  const resultCards = document.querySelectorAll(".result-card");
+  if (!allRecommendations || allRecommendations.length === 0) return;
 
-  resultCards.forEach((card) => {
-    const badge = card.querySelector(".deadline-badge");
+  let filteredResults = allRecommendations;
 
-    if (filter === "all") {
-      card.style.display = "block";
-    } else {
-      const cardUrgency = badge.className.includes(filter);
-      card.style.display = cardUrgency ? "block" : "none";
-    }
+  if (filter !== "all") {
+    filteredResults = allRecommendations.filter(
+      (fund) => fund.urgency === filter
+    );
+  }
+
+  resultElements.container.innerHTML = "";
+
+  if (filteredResults.length === 0) {
+    resultElements.container.innerHTML = `
+            <div class="results-placeholder">
+                <p>No funds match this deadline filter.</p>
+            </div>
+        `;
+  } else {
+    filteredResults.forEach((recommendation) => {
+      const card = createResultCardWithSave(recommendation);
+      resultElements.container.appendChild(card);
+    });
+  }
+}
+
+/* ===================================
+   Export to PDF
+   =================================== */
+function initExportPDF() {
+  const favoritesSection = document.getElementById("favoritesSection");
+  if (favoritesSection && !document.getElementById("exportPdfBtn")) {
+    const exportBtn = document.createElement("button");
+    exportBtn.id = "exportPdfBtn";
+    exportBtn.className = "export-pdf-btn";
+    exportBtn.textContent = "📄 Export to PDF";
+    exportBtn.style.cssText = `
+            margin-top: var(--spacing-md);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            background-color: var(--color-accent);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        `;
+
+    exportBtn.addEventListener("click", exportToPDF);
+    exportBtn.addEventListener("mouseenter", function () {
+      this.style.backgroundColor = "var(--color-accent-hover)";
+    });
+    exportBtn.addEventListener("mouseleave", function () {
+      this.style.backgroundColor = "var(--color-accent)";
+    });
+
+    favoritesSection.appendChild(exportBtn);
+  }
+}
+
+function exportToPDF() {
+  if (favorites.length === 0) {
+    alert("No favorites to export. Please save some funds first.");
+    return;
+  }
+
+  let pdfContent = "MY FILM FUND RECOMMENDATIONS\n";
+  pdfContent += "=".repeat(50) + "\n\n";
+  pdfContent += `Generated: ${new Date().toLocaleDateString()}\n\n`;
+
+  favorites.forEach((fund, index) => {
+    pdfContent += `${index + 1}. ${fund.name}\n`;
+    pdfContent += `   Urgency: ${fund.urgency}\n`;
+    pdfContent += `   ${fund.reason}\n\n`;
   });
+
+  const blob = new Blob([pdfContent], { type: "text/plain" });
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `film-funds-${new Date().toISOString().split("T")[0]}.txt`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  window.URL.revokeObjectURL(url);
+
+  showNotification("Favorites exported successfully!");
+}
+
+/* ===================================
+   Calendar Integration
+   =================================== */
+function addToGoogleCalendar(fundName, deadline) {
+  const startDate = deadline.replace(/-/g, "") + "T090000Z";
+  const endDate = deadline.replace(/-/g, "") + "T170000Z";
+
+  const title = encodeURIComponent(`Deadline: ${fundName}`);
+  const details = encodeURIComponent(
+    `Application deadline for ${fundName}. Visit official website to apply.`
+  );
+
+  const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDate}/${endDate}&details=${details}`;
+
+  window.open(url, "_blank");
 }
 
 /* ===================================
    Notification System
    =================================== */
 function showNotification(message) {
-  // Create notification element
   const notification = document.createElement("div");
   notification.className = "notification";
   notification.textContent = message;
 
-  // Add styles dynamically
   notification.style.cssText = `
         position: fixed;
-        top: 20px;
+        top: 80px;
         right: 20px;
         background-color: var(--color-accent);
         color: white;
@@ -1056,137 +1342,31 @@ function showNotification(message) {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         z-index: 1000;
         animation: slideIn 0.3s ease;
+        max-width: 300px;
     `;
 
   document.body.appendChild(notification);
 
-  // Remove after 3 seconds
   setTimeout(() => {
     notification.style.animation = "slideOut 0.3s ease";
     setTimeout(() => notification.remove(), 300);
   }, 3000);
 }
 
-// Add animation styles
-const style = document.createElement("style");
-style.textContent = `
+const notificationStyle = document.createElement("style");
+notificationStyle.textContent = `
     @keyframes slideIn {
-        from {
-            transform: translateX(400px);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
+        from { transform: translateX(400px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
     }
     @keyframes slideOut {
-        from {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(400px);
-            opacity: 0;
-        }
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(400px); opacity: 0; }
     }
 `;
-document.head.appendChild(style);
+document.head.appendChild(notificationStyle);
 
 /* ===================================
-   Updated Display Results with Save Button
+   Start Application
    =================================== */
-function displayResultsWithFavorites(recommendations) {
-  // Store recommendations globally
-  allRecommendations = recommendations;
-
-  // Hide loading
-  resultElements.loading.classList.add("hidden");
-
-  // Show filter section
-  const filterSection = document.getElementById("filterSection");
-  if (filterSection) filterSection.classList.remove("hidden");
-
-  // Clear previous results
-  resultElements.container.innerHTML = "";
-
-  // Check if we have recommendations
-  if (recommendations.length === 0) {
-    resultElements.container.innerHTML = `
-            <div class="results-placeholder">
-                <p>${UI_TEXT[currentLanguage].noResults}</p>
-            </div>
-        `;
-  } else {
-    // Create result cards
-    recommendations.forEach((recommendation) => {
-      const card = createResultCardWithSave(recommendation);
-      resultElements.container.appendChild(card);
-    });
-  }
-
-  // Show results
-  resultElements.container.classList.remove("hidden");
-}
-
-function createResultCardWithSave(recommendation) {
-  const card = document.createElement("div");
-  card.className = "result-card";
-
-  const deadlineClass = `deadline-${recommendation.urgency}`;
-  const deadlineText =
-    UI_TEXT[currentLanguage][recommendation.urgency] || recommendation.urgency;
-  const isSaved = isFavorite(recommendation.name);
-  const saveButtonText = isSaved
-    ? UI_TEXT[currentLanguage].removeFavorite
-    : UI_TEXT[currentLanguage].saveButton;
-  const saveButtonClass = isSaved ? "saved" : "";
-
-  card.innerHTML = `
-        <div class="result-header">
-            <h3 class="fund-name">${recommendation.name}</h3>
-            <span class="deadline-badge ${deadlineClass}">${deadlineText}</span>
-        </div>
-        <div class="result-content">
-            <div class="result-section">
-                <div class="result-label">${UI_TEXT[currentLanguage].matchReason}:</div>
-                <p class="result-text">${recommendation.reason}</p>
-            </div>
-        </div>
-        <button class="save-favorite-btn ${saveButtonClass}" data-fund-name="${recommendation.name}">
-            ${saveButtonText}
-        </button>
-    `;
-
-  // Add save button event listener
-  const saveBtn = card.querySelector(".save-favorite-btn");
-  saveBtn.addEventListener("click", () => {
-    if (isFavorite(recommendation.name)) {
-      removeFromFavorites(recommendation.name);
-      saveBtn.textContent = UI_TEXT[currentLanguage].saveButton;
-      saveBtn.classList.remove("saved");
-    } else {
-      addToFavorites(recommendation);
-      saveBtn.textContent = UI_TEXT[currentLanguage].removeFavorite;
-      saveBtn.classList.add("saved");
-    }
-  });
-
-  return card;
-}
-
-/* ===================================
-   Update Form Submit Handler
-   =================================== */
-const originalHandleFormSubmit = handleFormSubmit;
-
-handleFormSubmit = function (event) {
-  event.preventDefault();
-  const formData = getFormData();
-  showLoading();
-
-  setTimeout(() => {
-    const recommendations = generateRecommendations(formData);
-    displayResultsWithFavorites(recommendations);
-  }, 2000);
-};
+document.addEventListener("DOMContentLoaded", initializeApp);

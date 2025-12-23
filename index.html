@@ -15,11 +15,9 @@
     <header class="site-header">
       <nav class="main-nav">
         <div class="container nav-container">
-          <!-- Logo Section -->
           <div class="nav-logo">
             <a href="index.html" class="logo-link">
               <div class="logo-placeholder">FGIA</div>
-              <span class="logo-text">Film Grant Intelligence</span>
             </a>
           </div>
 
@@ -48,11 +46,36 @@
             <li><a href="#resources" class="nav-link">Resources</a></li>
             <li><a href="#about" class="nav-link">About</a></li>
 
-            <!-- Language Switcher -->
+            <!-- Language Switcher Dropdown -->
             <li class="language-switcher">
-              <button class="lang-button active" data-lang="en">EN</button>
-              <button class="lang-button" data-lang="es">ES</button>
-              <button class="lang-button" data-lang="ua">UA</button>
+              <div class="dropdown">
+                <button class="dropdown-button" id="langDropdownBtn">
+                  <span id="currentLang">ENG</span>
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="currentColor"
+                  >
+                    <path d="M2 4l4 4 4-4z" />
+                  </svg>
+                </button>
+                <div class="dropdown-content" id="langDropdownContent">
+                  <button
+                    class="dropdown-item active"
+                    data-lang="en"
+                    data-label="ENG"
+                  >
+                    English
+                  </button>
+                  <button class="dropdown-item" data-lang="es" data-label="SPA">
+                    Español
+                  </button>
+                  <button class="dropdown-item" data-lang="ua" data-label="UKR">
+                    Українська
+                  </button>
+                </div>
+              </div>
             </li>
 
             <!-- Login Button -->
