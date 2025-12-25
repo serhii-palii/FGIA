@@ -3,45 +3,32 @@
    =================================== */
 const UI_TEXT = {
   en: {
-    // Header
     title: "Festival & Grant Intelligence Assistant",
     description:
       "Discover European film funds and grants tailored to your project",
 
-    // Navigation
-    navFunds: "Funds",
-    navFestivals: "Festivals",
-    navResources: "Resources",
-    navAbout: "About",
-    navLogin: "Login",
-
-    // Form Labels
     projectStage: "Project Stage",
     projectType: "Project Type",
     nationality: "Nationality",
     genre: "Genre",
     language: "Language",
 
-    // Form Helpers
     helperProjectStage: "Current development phase of your film project",
     helperProjectType: "Format and category of your production",
     helperNationality: "Primary country of production or co-production",
     helperGenre: "Primary genre or thematic category",
     helperLanguage: "Primary language of the project",
 
-    // Form Placeholders
     placeholderProjectStage: "Select project stage",
     placeholderProjectType: "Select project type",
     placeholderNationality: "Select nationality",
     placeholderGenre: "Select genre",
     placeholderLanguage: "Select language",
 
-    // Buttons
     submitButton: "Get Recommendations",
     saveButton: "Save to Favorites",
     removeFavorite: "Remove from Favorites",
 
-    // Results
     loadingMessage:
       "Analyzing your project and matching with relevant funds...",
     noResults:
@@ -49,33 +36,50 @@ const UI_TEXT = {
     matchReason: "Why it fits",
     deadline: "Deadline urgency",
 
-    // Deadline Types
     urgent: "Urgent",
     moderate: "Moderate",
     flexible: "Flexible",
 
-    // Messages
     placeholderText:
       "Complete the form above to receive personalized fund recommendations for your project.",
     favoriteAdded: "Added to favorites!",
     favoriteRemoved: "Removed from favorites",
 
-    // Footer
+    footerResources: "Resources",
+    footerFunds: "Film Funds",
+    footerFestivals: "Festivals",
+    footerGrants: "Grant Database",
+    footerDeadlines: "Deadline Calendar",
+
+    footerSupport: "Support",
+    footerGuide: "User Guide",
+    footerFaq: "FAQ",
+    footerContact: "Contact Us",
+    footerFeedback: "Feedback",
+
+    footerCompany: "Company",
+    footerAbout: "About Us",
+    footerTeam: "Our Team",
+    footerPartners: "Partners",
+    footerCareers: "Careers",
+
+    footerLegal: "Legal",
+    footerPrivacy: "Privacy Policy",
+    footerTerms: "Terms of Service",
+    footerCookies: "Cookie Policy",
+
+    footerCopyright: "© 2025 FGIA. All rights reserved.",
+
+    login: "Login",
+
     disclaimer:
       "This tool provides guidance based on general criteria. Recommendations are not guarantees of eligibility or success. Always verify specific requirements and deadlines on official fund websites.",
   },
 
   es: {
-    // Spanish translations
     title: "Asistente de Inteligencia de Festivales y Subvenciones",
     description:
       "Descubre fondos y subvenciones cinematográficas europeas adaptadas a tu proyecto",
-
-    navFunds: "Fondos",
-    navFestivals: "Festivales",
-    navResources: "Recursos",
-    navAbout: "Acerca de",
-    navLogin: "Iniciar sesión",
 
     projectStage: "Etapa del Proyecto",
     projectType: "Tipo de Proyecto",
@@ -115,20 +119,40 @@ const UI_TEXT = {
     favoriteAdded: "¡Añadido a favoritos!",
     favoriteRemoved: "Eliminado de favoritos",
 
+    footerResources: "Recursos",
+    footerFunds: "Fondos Cinematográficos",
+    footerFestivals: "Festivales",
+    footerGrants: "Base de Datos de Subvenciones",
+    footerDeadlines: "Calendario de Plazos",
+
+    footerSupport: "Soporte",
+    footerGuide: "Guía del Usuario",
+    footerFaq: "Preguntas Frecuentes",
+    footerContact: "Contáctenos",
+    footerFeedback: "Comentarios",
+
+    footerCompany: "Empresa",
+    footerAbout: "Sobre Nosotros",
+    footerTeam: "Nuestro Equipo",
+    footerPartners: "Socios",
+    footerCareers: "Carreras",
+
+    footerLegal: "Legal",
+    footerPrivacy: "Política de Privacidad",
+    footerTerms: "Términos de Servicio",
+    footerCookies: "Política de Cookies",
+
+    footerCopyright: "© 2025 FGIA. Todos los derechos reservados.",
+
+    login: "Iniciar sesión",
+
     disclaimer:
       "Esta herramienta proporciona orientación basada en criterios generales. Las recomendaciones no son garantías de elegibilidad o éxito. Siempre verifica los requisitos específicos y plazos en los sitios web oficiales de los fondos.",
   },
 
   ua: {
-    // Ukrainian translations
     title: "Асистент пошуку фестивалів та грантів",
     description: "Знайдіть європейські кіно-фонди та гранти для вашого проєкту",
-
-    navFunds: "Фонди",
-    navFestivals: "Фестивалі",
-    navResources: "Ресурси",
-    navAbout: "Про нас",
-    navLogin: "Увійти",
 
     projectStage: "Етап проєкту",
     projectType: "Тип проєкту",
@@ -167,13 +191,40 @@ const UI_TEXT = {
     favoriteAdded: "Додано до обраного!",
     favoriteRemoved: "Видалено з обраного",
 
+    footerResources: "Ресурси",
+    footerFunds: "Кінофонди",
+    footerFestivals: "Фестивалі",
+    footerGrants: "База грантів",
+    footerDeadlines: "Календар дедлайнів",
+
+    footerSupport: "Підтримка",
+    footerGuide: "Посібник користувача",
+    footerFaq: "Поширені запитання",
+    footerContact: "Зв'язатися з нами",
+    footerFeedback: "Відгуки",
+
+    footerCompany: "Компанія",
+    footerAbout: "Про нас",
+    footerTeam: "Наша команда",
+    footerPartners: "Партнери",
+    footerCareers: "Кар'єра",
+
+    footerLegal: "Юридична інформація",
+    footerPrivacy: "Політика конфіденційності",
+    footerTerms: "Умови використання",
+    footerCookies: "Політика cookie",
+
+    footerCopyright: "© 2025 FGIA. Всі права захищені.",
+
+    login: "Увійти",
+
     disclaimer:
       "Цей інструмент надає рекомендації на основі загальних критеріїв. Рекомендації не є гарантією відповідності чи успіху. Завжди перевіряйте конкретні вимоги та терміни на офіційних сайтах фондів.",
   },
 };
 
 /* ===================================
-   Taxonomy Options - Film Industry Data
+   Taxonomy Options
    =================================== */
 const TAXONOMY = {
   projectStage: [
@@ -183,7 +234,6 @@ const TAXONOMY = {
     { value: "post-production", label: "Post-Production" },
     { value: "distribution", label: "Distribution" },
   ],
-
   projectType: [
     { value: "feature-film", label: "Feature Film" },
     { value: "documentary", label: "Documentary" },
@@ -192,7 +242,6 @@ const TAXONOMY = {
     { value: "animation", label: "Animation" },
     { value: "experimental", label: "Experimental" },
   ],
-
   nationality: [
     { value: "ukraine", label: "Ukraine" },
     { value: "poland", label: "Poland" },
@@ -207,7 +256,6 @@ const TAXONOMY = {
     { value: "other-eu", label: "Other European Union" },
     { value: "co-production", label: "Co-Production" },
   ],
-
   genre: [
     { value: "drama", label: "Drama" },
     { value: "documentary", label: "Documentary" },
@@ -220,7 +268,6 @@ const TAXONOMY = {
     { value: "war", label: "War / Conflict" },
     { value: "cultural", label: "Cultural / Heritage" },
   ],
-
   language: [
     { value: "ukrainian", label: "Ukrainian" },
     { value: "english", label: "English" },
@@ -235,10 +282,9 @@ const TAXONOMY = {
 };
 
 /* ===================================
-   Expanded Mock Fund & Festival Database
+   Mock Fund Database
    =================================== */
 const MOCK_FUNDS = [
-  // Major European Funds
   {
     name: "Creative Europe MEDIA",
     matchCriteria: [
@@ -292,8 +338,6 @@ const MOCK_FUNDS = [
     urgency: "flexible",
     type: "fund",
   },
-
-  // Regional & Specialized Funds
   {
     name: "Polish Film Institute",
     matchCriteria: [
@@ -436,8 +480,6 @@ const MOCK_FUNDS = [
     urgency: "moderate",
     type: "fund",
   },
-
-  // Major Film Festivals
   {
     name: "Cannes Film Festival - Cinéfondation",
     matchCriteria: [
@@ -574,35 +616,23 @@ const MOCK_FUNDS = [
 ];
 
 /* ===================================
-   DOM Elements
+   Global State
    =================================== */
 let formElements = {};
 let resultElements = {};
-
-/* ===================================
-   Global State
-   =================================== */
 let favorites = [];
 let allRecommendations = [];
 let currentFilter = "all";
 let currentLanguage = "en";
-
 const STORAGE_KEY = "fgia_favorites";
 
 /* ===================================
    Initialize Application
    =================================== */
 function initializeApp() {
-  // Cache DOM elements
   cacheElements();
-
-  // Populate form dropdowns
   populateDropdowns();
-
-  // Attach event listeners
   attachEventListeners();
-
-  // Initialize new features
   initBurgerMenu();
   initLanguageSwitcher();
   initSearch();
@@ -610,9 +640,6 @@ function initializeApp() {
   initFilters();
 }
 
-/* ===================================
-   Cache DOM Elements
-   =================================== */
 function cacheElements() {
   formElements = {
     form: document.getElementById("recommendationForm"),
@@ -630,15 +657,9 @@ function cacheElements() {
   };
 }
 
-/* ===================================
-   Populate Form Dropdowns
-   =================================== */
 function populateDropdowns() {
-  // Iterate through each taxonomy category
   Object.keys(TAXONOMY).forEach((category) => {
     const selectElement = formElements[category];
-
-    // Add options to dropdown
     TAXONOMY[category].forEach((option) => {
       const optionElement = document.createElement("option");
       optionElement.value = option.value;
@@ -648,36 +669,20 @@ function populateDropdowns() {
   });
 }
 
-/* ===================================
-   Attach Event Listeners
-   =================================== */
 function attachEventListeners() {
   formElements.form.addEventListener("submit", handleFormSubmit);
 }
 
-/* ===================================
-   Handle Form Submission
-   =================================== */
 function handleFormSubmit(event) {
-  // Prevent default form submission
   event.preventDefault();
-
-  // Get form data
   const formData = getFormData();
-
-  // Show loading state
   showLoading();
-
-  // Simulate AI processing with delay
   setTimeout(() => {
     const recommendations = generateRecommendations(formData);
     displayResultsWithFavorites(recommendations);
   }, 2000);
 }
 
-/* ===================================
-   Get Form Data
-   =================================== */
 function getFormData() {
   return {
     projectStage: formElements.projectStage.value,
@@ -688,162 +693,32 @@ function getFormData() {
   };
 }
 
-/* ===================================
-   Show Loading State
-   =================================== */
 function showLoading() {
   resultElements.placeholder.classList.add("hidden");
   resultElements.container.classList.add("hidden");
   resultElements.loading.classList.remove("hidden");
 }
 
-/* ===================================
-   Generate Mock Recommendations
-   =================================== */
 function generateRecommendations(formData) {
   const recommendations = [];
-
-  // Create array of form values for matching
   const formValues = Object.values(formData);
 
-  // Score each fund based on matches
   MOCK_FUNDS.forEach((fund) => {
     let matchScore = 0;
-
-    // Count how many criteria match
     fund.matchCriteria.forEach((criterion) => {
-      if (formValues.includes(criterion)) {
-        matchScore++;
-      }
+      if (formValues.includes(criterion)) matchScore++;
     });
-
-    // If at least 2 criteria match, include in recommendations
     if (matchScore >= 2) {
-      recommendations.push({
-        ...fund,
-        matchScore,
-      });
+      recommendations.push({ ...fund, matchScore });
     }
   });
 
-  // Sort by match score (highest first)
   recommendations.sort((a, b) => b.matchScore - a.matchScore);
-
-  // Return top 5 recommendations
   return recommendations.slice(0, 5);
 }
 
 /* ===================================
-   Display Results with Favorites
-   =================================== */
-function displayResultsWithFavorites(recommendations) {
-  allRecommendations = recommendations;
-  resultElements.loading.classList.add("hidden");
-
-  const filterSection = document.getElementById("filterSection");
-  if (filterSection) filterSection.classList.remove("hidden");
-
-  resultElements.container.innerHTML = "";
-
-  if (recommendations.length === 0) {
-    resultElements.container.innerHTML = `
-            <div class="results-placeholder">
-                <p>${UI_TEXT[currentLanguage].noResults}</p>
-            </div>
-        `;
-  } else {
-    recommendations.forEach((recommendation) => {
-      const card = createResultCardWithSave(recommendation);
-      resultElements.container.appendChild(card);
-    });
-  }
-
-  resultElements.container.classList.remove("hidden");
-
-  // Show export button if favorites exist
-  if (favorites.length > 0) {
-    initExportPDF();
-  }
-}
-
-/* ===================================
-   Create Result Card with Save Button
-   =================================== */
-function createResultCardWithSave(recommendation) {
-  const card = document.createElement("div");
-  card.className = "result-card";
-
-  const deadlineClass = `deadline-${recommendation.urgency}`;
-  const deadlineText =
-    UI_TEXT[currentLanguage][recommendation.urgency] || recommendation.urgency;
-  const isSaved = isFavorite(recommendation.name);
-  const saveButtonText = isSaved
-    ? UI_TEXT[currentLanguage].removeFavorite
-    : UI_TEXT[currentLanguage].saveButton;
-  const saveButtonClass = isSaved ? "saved" : "";
-
-  // Mock deadline for calendar (2026)
-  const mockDeadlines = {
-    urgent: "2026-03-31",
-    moderate: "2026-06-30",
-    flexible: "2026-09-30",
-  };
-  const deadline = mockDeadlines[recommendation.urgency];
-
-  card.innerHTML = `
-        <div class="result-header">
-            <h3 class="fund-name">${recommendation.name}</h3>
-            <span class="deadline-badge ${deadlineClass}">${deadlineText}</span>
-        </div>
-        <div class="result-content">
-            <div class="result-section">
-                <div class="result-label">${UI_TEXT[currentLanguage].matchReason}:</div>
-                <p class="result-text">${recommendation.reason}</p>
-            </div>
-        </div>
-        <div style="display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap;">
-            <button class="save-favorite-btn ${saveButtonClass}" data-fund-name="${recommendation.name}">
-                ${saveButtonText}
-            </button>
-            <button class="calendar-btn" data-fund-name="${recommendation.name}" data-deadline="${deadline}" style="padding: 6px 12px; font-size: 0.875rem; background-color: transparent; color: var(--color-accent); border: 1px solid var(--color-accent); border-radius: 8px; cursor: pointer; transition: all 0.2s ease;">
-                📅 Add to Calendar
-            </button>
-        </div>
-    `;
-
-  // Save button event listener
-  const saveBtn = card.querySelector(".save-favorite-btn");
-  saveBtn.addEventListener("click", () => {
-    if (isFavorite(recommendation.name)) {
-      removeFromFavorites(recommendation.name);
-    } else {
-      addToFavorites(recommendation);
-      saveBtn.textContent = UI_TEXT[currentLanguage].removeFavorite;
-      saveBtn.classList.add("saved");
-    }
-  });
-
-  // Calendar button event listener
-  const calendarBtn = card.querySelector(".calendar-btn");
-  calendarBtn.addEventListener("click", () => {
-    addToGoogleCalendar(recommendation.name, deadline);
-  });
-
-  calendarBtn.addEventListener("mouseenter", function () {
-    this.style.backgroundColor = "var(--color-accent)";
-    this.style.color = "white";
-  });
-
-  calendarBtn.addEventListener("mouseleave", function () {
-    this.style.backgroundColor = "transparent";
-    this.style.color = "var(--color-accent)";
-  });
-
-  return card;
-}
-
-/* ===================================
-   Navigation Functionality
+   Burger Menu
    =================================== */
 function initBurgerMenu() {
   const burgerMenu = document.getElementById("burgerMenu");
@@ -855,7 +730,6 @@ function initBurgerMenu() {
       navLinks.classList.toggle("active");
     });
 
-    // Close menu when clicking a link
     const links = navLinks.querySelectorAll(".nav-link");
     links.forEach((link) => {
       link.addEventListener("click", () => {
@@ -864,7 +738,6 @@ function initBurgerMenu() {
       });
     });
 
-    // Close menu when clicking outside
     document.addEventListener("click", (e) => {
       if (!burgerMenu.contains(e.target) && !navLinks.contains(e.target)) {
         burgerMenu.classList.remove("active");
@@ -875,7 +748,7 @@ function initBurgerMenu() {
 }
 
 /* ===================================
-   Language Switcher - Dropdown
+   Language Switcher
    =================================== */
 function initLanguageSwitcher() {
   const dropdownBtn = document.getElementById("langDropdownBtn");
@@ -885,58 +758,38 @@ function initLanguageSwitcher() {
 
   if (!dropdownBtn || !dropdownContent) return;
 
-  // Toggle dropdown
   dropdownBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     dropdownBtn.classList.toggle("active");
     dropdownContent.classList.toggle("show");
   });
 
-  // Close dropdown when clicking outside
   document.addEventListener("click", () => {
     dropdownBtn.classList.remove("active");
     dropdownContent.classList.remove("show");
   });
 
-  // Prevent closing when clicking inside dropdown
   dropdownContent.addEventListener("click", (e) => {
     e.stopPropagation();
   });
 
-  // Handle language selection
   langItems.forEach((item) => {
     item.addEventListener("click", () => {
-      // Remove active from all items
       langItems.forEach((i) => i.classList.remove("active"));
-
-      // Add active to clicked item
       item.classList.add("active");
 
-      // Get selected language
       currentLanguage = item.getAttribute("data-lang");
       const langLabel = item.getAttribute("data-label");
 
-      // Update button text
       currentLangSpan.textContent = langLabel;
-
-      // Close dropdown
       dropdownBtn.classList.remove("active");
       dropdownContent.classList.remove("show");
 
-      // Update UI text
       updateUILanguage(currentLanguage);
 
-      // Update existing results if any
-      const resultsContainer = document.getElementById("resultsContainer");
-      if (
-        resultsContainer &&
-        !resultsContainer.classList.contains("hidden") &&
-        allRecommendations.length > 0
-      ) {
+      if (allRecommendations.length > 0) {
         displayResultsWithFavorites(allRecommendations);
       }
-
-      // Update favorites if any
       if (favorites.length > 0) {
         renderFavorites();
       }
@@ -945,13 +798,11 @@ function initLanguageSwitcher() {
 }
 
 function updateUILanguage(lang) {
-  // Update page title and description
   const title = document.querySelector(".site-title");
   const description = document.querySelector(".site-description");
   if (title) title.textContent = UI_TEXT[lang].title;
   if (description) description.textContent = UI_TEXT[lang].description;
 
-  // Update form labels
   const labels = {
     projectStage: 'label[for="projectStage"]',
     projectType: 'label[for="projectType"]',
@@ -965,7 +816,6 @@ function updateUILanguage(lang) {
     if (label) label.textContent = UI_TEXT[lang][key];
   });
 
-  // Update helper texts
   const helpers = document.querySelectorAll(".helper-text");
   const helperKeys = [
     "helperProjectStage",
@@ -980,7 +830,6 @@ function updateUILanguage(lang) {
     }
   });
 
-  // Update placeholders
   const selects = {
     projectStage: "placeholderProjectStage",
     projectType: "placeholderProjectType",
@@ -996,30 +845,46 @@ function updateUILanguage(lang) {
     }
   });
 
-  // Update button text
   const submitBtn = document.querySelector(".submit-button");
   if (submitBtn) submitBtn.textContent = UI_TEXT[lang].submitButton;
 
-  // Update placeholder text
+  const loginBtn = document.getElementById("loginButton");
+  if (loginBtn) loginBtn.textContent = UI_TEXT[lang].login;
+
   const placeholder = document.getElementById("resultsPlaceholder");
   if (placeholder) {
     const p = placeholder.querySelector("p");
     if (p) p.textContent = UI_TEXT[lang].placeholderText;
   }
+
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    const key = element.getAttribute("data-i18n");
+    if (UI_TEXT[lang][key]) {
+      element.textContent = UI_TEXT[lang][key];
+    }
+  });
 }
 
 /* ===================================
-   Search Functionality
+   Search Toggle
    =================================== */
 function initSearch() {
+  const searchToggle = document.getElementById("searchToggle");
   const searchInput = document.getElementById("navSearchInput");
+  const navSearch = document.getElementById("navSearch");
 
-  if (searchInput) {
+  if (searchToggle && searchInput) {
+    searchToggle.addEventListener("click", () => {
+      searchInput.classList.toggle("expanded");
+      if (searchInput.classList.contains("expanded")) {
+        searchInput.focus();
+      }
+    });
+
     searchInput.addEventListener("input", (e) => {
       const searchTerm = e.target.value.toLowerCase().trim();
 
       if (searchTerm.length === 0) {
-        // Clear search - show placeholder
         resultElements.container.classList.add("hidden");
         resultElements.placeholder.classList.remove("hidden");
         const filterSection = document.getElementById("filterSection");
@@ -1029,7 +894,6 @@ function initSearch() {
 
       if (searchTerm.length < 2) return;
 
-      // Filter funds by search term
       const filteredFunds = MOCK_FUNDS.filter(
         (fund) =>
           fund.name.toLowerCase().includes(searchTerm) ||
@@ -1037,7 +901,6 @@ function initSearch() {
           fund.matchCriteria.some((criteria) => criteria.includes(searchTerm))
       );
 
-      // Display filtered results
       if (filteredFunds.length > 0) {
         resultElements.placeholder.classList.add("hidden");
         const filterSection = document.getElementById("filterSection");
@@ -1051,6 +914,15 @@ function initSearch() {
                 `;
         resultElements.container.classList.remove("hidden");
         resultElements.placeholder.classList.add("hidden");
+      }
+    });
+
+    document.addEventListener("click", (e) => {
+      if (
+        !navSearch.contains(e.target) &&
+        searchInput.classList.contains("expanded")
+      ) {
+        searchInput.classList.remove("expanded");
       }
     });
   }
@@ -1175,7 +1047,7 @@ function createFavoriteItem(fund) {
   item.innerHTML = `
         <div class="result-header">
             <h3 class="fund-name">${fund.name}</h3>
-            <div style="display: flex; align-items: center; gap: 8px;">
+            <div class="favorite-header-right">
                 <span class="deadline-badge ${deadlineClass}">${deadlineText}</span>
                 <button class="favorite-remove-btn" data-fund="${fund.name}" aria-label="Remove from favorites">✕</button>
             </div>
@@ -1183,7 +1055,7 @@ function createFavoriteItem(fund) {
         <div class="result-content">
             <div class="result-section">
                 <div class="result-label">${UI_TEXT[currentLanguage].matchReason}:</div>
-                <p class="result-text">${fund.reason}</p>
+                <p class="result-text visible">${fund.reason}</p>
             </div>
         </div>
     `;
@@ -1241,6 +1113,112 @@ function applyFilter(filter) {
       resultElements.container.appendChild(card);
     });
   }
+}
+
+/* ===================================
+   Display Results
+   =================================== */
+function displayResultsWithFavorites(recommendations) {
+  allRecommendations = recommendations;
+  resultElements.loading.classList.add("hidden");
+
+  const filterSection = document.getElementById("filterSection");
+  if (filterSection) filterSection.classList.remove("hidden");
+
+  resultElements.container.innerHTML = "";
+
+  if (recommendations.length === 0) {
+    resultElements.container.innerHTML = `
+            <div class="results-placeholder">
+                <p>${UI_TEXT[currentLanguage].noResults}</p>
+            </div>
+        `;
+  } else {
+    recommendations.forEach((recommendation) => {
+      const card = createResultCardWithSave(recommendation);
+      resultElements.container.appendChild(card);
+    });
+  }
+
+  resultElements.container.classList.remove("hidden");
+
+  if (favorites.length > 0) {
+    initExportPDF();
+  }
+}
+
+function createResultCardWithSave(recommendation) {
+  const card = document.createElement("div");
+  card.className = "result-card";
+
+  const deadlineClass = `deadline-${recommendation.urgency}`;
+  const deadlineText =
+    UI_TEXT[currentLanguage][recommendation.urgency] || recommendation.urgency;
+  const isSaved = isFavorite(recommendation.name);
+  const saveButtonText = isSaved
+    ? UI_TEXT[currentLanguage].removeFavorite
+    : UI_TEXT[currentLanguage].saveButton;
+  const saveButtonClass = isSaved ? "saved" : "";
+
+  const mockDeadlines = {
+    urgent: "2026-03-31",
+    moderate: "2026-06-30",
+    flexible: "2026-09-30",
+  };
+  const deadline = mockDeadlines[recommendation.urgency];
+
+  const uniqueId = `info-${Math.random().toString(36).substr(2, 9)}`;
+
+  card.innerHTML = `
+        <div class="result-header">
+            <h3 class="fund-name">${recommendation.name}</h3>
+            <span class="deadline-badge ${deadlineClass}">${deadlineText}</span>
+        </div>
+        <div class="result-content">
+            <div class="result-section">
+                <div style="display: flex; align-items: center;">
+                    <span class="result-label">${UI_TEXT[currentLanguage].matchReason}</span>
+                    <button class="info-toggle" data-target="${uniqueId}" aria-label="Toggle details">i</button>
+                </div>
+                <p class="result-text" id="${uniqueId}">${recommendation.reason}</p>
+            </div>
+        </div>
+        <div class="card-actions">
+            <button class="save-favorite-btn ${saveButtonClass}" data-fund-name="${recommendation.name}">
+                ${saveButtonText}
+            </button>
+            <button class="calendar-btn" data-fund-name="${recommendation.name}" data-deadline="${deadline}">
+                📅 Add to Calendar
+            </button>
+        </div>
+    `;
+
+  // Info toggle
+  const infoToggle = card.querySelector(".info-toggle");
+  const resultText = card.querySelector(`#${uniqueId}`);
+  infoToggle.addEventListener("click", () => {
+    resultText.classList.toggle("visible");
+  });
+
+  // Save button
+  const saveBtn = card.querySelector(".save-favorite-btn");
+  saveBtn.addEventListener("click", () => {
+    if (isFavorite(recommendation.name)) {
+      removeFromFavorites(recommendation.name);
+    } else {
+      addToFavorites(recommendation);
+      saveBtn.textContent = UI_TEXT[currentLanguage].removeFavorite;
+      saveBtn.classList.add("saved");
+    }
+  });
+
+  // Calendar button
+  const calendarBtn = card.querySelector(".calendar-btn");
+  calendarBtn.addEventListener("click", () => {
+    addToGoogleCalendar(recommendation.name, deadline);
+  });
+
+  return card;
 }
 
 /* ===================================
