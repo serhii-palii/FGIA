@@ -6,7 +6,7 @@
 ![CSS](https://img.shields.io/badge/CSS-1375_lines-blue)
 ![JavaScript](https://img.shields.io/badge/JavaScript-808_lines-yellow)
 
-> **AI-powered film funding recommendations for European filmmakers**
+> **AI-powered film funding recommendations for filmmakers**
 
 An intelligent web application that helps film professionals discover relevant European film funds, grants, and festival opportunities tailored to their project's unique characteristics.
 
