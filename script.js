@@ -1,231 +1,8 @@
-/* ===================================
-   UI Text - Multi-Language Support
-   =================================== */
-const UI_TEXT = {
-  en: {
-    title: "Festival & Grant Intelligence Assistant",
-    description:
-      "Discover European film funds and grants tailored to your project",
+// ===================================
+// FGIA - Complete JavaScript
+// ===================================
 
-    projectStage: "Project Stage",
-    projectType: "Project Type",
-    nationality: "Nationality",
-    genre: "Genre",
-    language: "Language",
-
-    helperProjectStage: "Current development phase of your film project",
-    helperProjectType: "Format and category of your production",
-    helperNationality: "Primary country of production or co-production",
-    helperGenre: "Primary genre or thematic category",
-    helperLanguage: "Primary language of the project",
-
-    placeholderProjectStage: "Select project stage",
-    placeholderProjectType: "Select project type",
-    placeholderNationality: "Select nationality",
-    placeholderGenre: "Select genre",
-    placeholderLanguage: "Select language",
-
-    submitButton: "Get Recommendations",
-    saveButton: "Save to Favorites",
-    removeFavorite: "Remove from Favorites",
-
-    loadingMessage:
-      "Analyzing your project and matching with relevant funds...",
-    noResults:
-      "No specific recommendations found. Please try adjusting your criteria.",
-    matchReason: "Why it fits",
-    deadline: "Deadline urgency",
-
-    urgent: "Urgent",
-    moderate: "Moderate",
-    flexible: "Flexible",
-
-    placeholderText:
-      "Complete the form above to receive personalized fund recommendations for your project.",
-    favoriteAdded: "Added to favorites!",
-    favoriteRemoved: "Removed from favorites",
-
-    footerResources: "Resources",
-    footerFunds: "Film Funds",
-    footerFestivals: "Festivals",
-    footerGrants: "Grant Database",
-    footerDeadlines: "Deadline Calendar",
-
-    footerSupport: "Support",
-    footerGuide: "User Guide",
-    footerFaq: "FAQ",
-    footerContact: "Contact Us",
-    footerFeedback: "Feedback",
-
-    footerCompany: "Company",
-    footerAbout: "About Us",
-    footerTeam: "Our Team",
-    footerPartners: "Partners",
-    footerCareers: "Careers",
-
-    footerLegal: "Legal",
-    footerPrivacy: "Privacy Policy",
-    footerTerms: "Terms of Service",
-    footerCookies: "Cookie Policy",
-
-    footerCopyright: "© 2025 FGIA. All rights reserved.",
-
-    login: "Login",
-
-    disclaimer:
-      "This tool provides guidance based on general criteria. Recommendations are not guarantees of eligibility or success. Always verify specific requirements and deadlines on official fund websites.",
-  },
-
-  es: {
-    title: "Asistente de Inteligencia de Festivales y Subvenciones",
-    description:
-      "Descubre fondos y subvenciones cinematográficas europeas adaptadas a tu proyecto",
-
-    projectStage: "Etapa del Proyecto",
-    projectType: "Tipo de Proyecto",
-    nationality: "Nacionalidad",
-    genre: "Género",
-    language: "Idioma",
-
-    helperProjectStage:
-      "Fase actual de desarrollo de tu proyecto cinematográfico",
-    helperProjectType: "Formato y categoría de tu producción",
-    helperNationality: "País principal de producción o coproducción",
-    helperGenre: "Género principal o categoría temática",
-    helperLanguage: "Idioma principal del proyecto",
-
-    placeholderProjectStage: "Seleccionar etapa del proyecto",
-    placeholderProjectType: "Seleccionar tipo de proyecto",
-    placeholderNationality: "Seleccionar nacionalidad",
-    placeholderGenre: "Seleccionar género",
-    placeholderLanguage: "Seleccionar idioma",
-
-    submitButton: "Obtener Recomendaciones",
-    saveButton: "Guardar en Favoritos",
-    removeFavorite: "Eliminar de Favoritos",
-
-    loadingMessage: "Analizando tu proyecto y buscando fondos relevantes...",
-    noResults:
-      "No se encontraron recomendaciones específicas. Por favor, ajusta tus criterios.",
-    matchReason: "Por qué encaja",
-    deadline: "Urgencia del plazo",
-
-    urgent: "Urgente",
-    moderate: "Moderado",
-    flexible: "Flexible",
-
-    placeholderText:
-      "Completa el formulario arriba para recibir recomendaciones personalizadas de fondos para tu proyecto.",
-    favoriteAdded: "¡Añadido a favoritos!",
-    favoriteRemoved: "Eliminado de favoritos",
-
-    footerResources: "Recursos",
-    footerFunds: "Fondos Cinematográficos",
-    footerFestivals: "Festivales",
-    footerGrants: "Base de Datos de Subvenciones",
-    footerDeadlines: "Calendario de Plazos",
-
-    footerSupport: "Soporte",
-    footerGuide: "Guía del Usuario",
-    footerFaq: "Preguntas Frecuentes",
-    footerContact: "Contáctenos",
-    footerFeedback: "Comentarios",
-
-    footerCompany: "Empresa",
-    footerAbout: "Sobre Nosotros",
-    footerTeam: "Nuestro Equipo",
-    footerPartners: "Socios",
-    footerCareers: "Carreras",
-
-    footerLegal: "Legal",
-    footerPrivacy: "Política de Privacidad",
-    footerTerms: "Términos de Servicio",
-    footerCookies: "Política de Cookies",
-
-    footerCopyright: "© 2025 FGIA. Todos los derechos reservados.",
-
-    login: "Iniciar sesión",
-
-    disclaimer:
-      "Esta herramienta proporciona orientación basada en criterios generales. Las recomendaciones no son garantías de elegibilidad o éxito. Siempre verifica los requisitos específicos y plazos en los sitios web oficiales de los fondos.",
-  },
-
-  ua: {
-    title: "Асистент пошуку фестивалів та грантів",
-    description: "Знайдіть європейські кіно-фонди та гранти для вашого проєкту",
-
-    projectStage: "Етап проєкту",
-    projectType: "Тип проєкту",
-    nationality: "Національність",
-    genre: "Жанр",
-    language: "Мова",
-
-    helperProjectStage: "Поточна фаза розробки вашого кінопроєкту",
-    helperProjectType: "Формат та категорія вашої продукції",
-    helperNationality: "Основна країна виробництва або копродукції",
-    helperGenre: "Основний жанр або тематична категорія",
-    helperLanguage: "Основна мова проєкту",
-
-    placeholderProjectStage: "Оберіть етап проєкту",
-    placeholderProjectType: "Оберіть тип проєкту",
-    placeholderNationality: "Оберіть національність",
-    placeholderGenre: "Оберіть жанр",
-    placeholderLanguage: "Оберіть мову",
-
-    submitButton: "Отримати рекомендації",
-    saveButton: "Зберегти в обране",
-    removeFavorite: "Видалити з обраного",
-
-    loadingMessage: "Аналізуємо ваш проєкт та шукаємо відповідні фонди...",
-    noResults:
-      "Конкретних рекомендацій не знайдено. Будь ласка, змініть критерії пошуку.",
-    matchReason: "Чому підходить",
-    deadline: "Терміновість дедлайну",
-
-    urgent: "Терміново",
-    moderate: "Помірно",
-    flexible: "Гнучко",
-
-    placeholderText:
-      "Заповніть форму вище, щоб отримати персоналізовані рекомендації фондів для вашого проєкту.",
-    favoriteAdded: "Додано до обраного!",
-    favoriteRemoved: "Видалено з обраного",
-
-    footerResources: "Ресурси",
-    footerFunds: "Кінофонди",
-    footerFestivals: "Фестивалі",
-    footerGrants: "База грантів",
-    footerDeadlines: "Календар дедлайнів",
-
-    footerSupport: "Підтримка",
-    footerGuide: "Посібник користувача",
-    footerFaq: "Поширені запитання",
-    footerContact: "Зв'язатися з нами",
-    footerFeedback: "Відгуки",
-
-    footerCompany: "Компанія",
-    footerAbout: "Про нас",
-    footerTeam: "Наша команда",
-    footerPartners: "Партнери",
-    footerCareers: "Кар'єра",
-
-    footerLegal: "Юридична інформація",
-    footerPrivacy: "Політика конфіденційності",
-    footerTerms: "Умови використання",
-    footerCookies: "Політика cookie",
-
-    footerCopyright: "© 2025 FGIA. Всі права захищені.",
-
-    login: "Увійти",
-
-    disclaimer:
-      "Цей інструмент надає рекомендації на основі загальних критеріїв. Рекомендації не є гарантією відповідності чи успіху. Завжди перевіряйте конкретні вимоги та терміни на офіційних сайтах фондів.",
-  },
-};
-
-/* ===================================
-   Taxonomy Options
-   =================================== */
+// Taxonomy Data
 const TAXONOMY = {
   projectStage: [
     { value: "development", label: "Development" },
@@ -253,7 +30,7 @@ const TAXONOMY = {
     { value: "netherlands", label: "Netherlands" },
     { value: "belgium", label: "Belgium" },
     { value: "czech-republic", label: "Czech Republic" },
-    { value: "other-eu", label: "Other European Union" },
+    { value: "other-eu", label: "Other EU" },
     { value: "co-production", label: "Co-Production" },
   ],
   genre: [
@@ -281,13 +58,13 @@ const TAXONOMY = {
   ],
 };
 
-/* ===================================
-   Mock Fund Database
-   =================================== */
-const MOCK_FUNDS = [
+// Mock Funds Database
+const FUNDS = [
   {
     name: "Creative Europe MEDIA",
-    matchCriteria: [
+    type: "fund",
+    urgency: "moderate",
+    criteria: [
       "feature-film",
       "documentary",
       "series",
@@ -296,13 +73,15 @@ const MOCK_FUNDS = [
       "co-production",
     ],
     reason:
-      "Supports European co-productions and cross-border distribution with strong emphasis on cultural diversity. Priority for emerging filmmakers and underrepresented regions including Ukraine.",
-    urgency: "moderate",
-    type: "fund",
+      "Supports European co-productions and cross-border distribution with strong emphasis on cultural diversity.",
+    image:
+      "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&h=200&fit=crop",
   },
   {
     name: "Eurimages",
-    matchCriteria: [
+    type: "fund",
+    urgency: "flexible",
+    criteria: [
       "feature-film",
       "documentary",
       "co-production",
@@ -311,13 +90,15 @@ const MOCK_FUNDS = [
       "art-house",
     ],
     reason:
-      "Focuses on European co-production films with artistic and cultural value. Strong track record supporting Ukrainian-European collaborations.",
-    urgency: "flexible",
-    type: "fund",
+      "Focuses on European co-production films with artistic and cultural value.",
+    image:
+      "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=400&h=200&fit=crop",
   },
   {
     name: "Aide aux Cinémas du Monde (CNC)",
-    matchCriteria: [
+    type: "fund",
+    urgency: "urgent",
+    criteria: [
       "development",
       "production",
       "post-production",
@@ -326,21 +107,25 @@ const MOCK_FUNDS = [
       "ukraine",
     ],
     reason:
-      "French support for films from developing countries and emerging cinematographies. Special attention to Ukrainian cinema since 2022.",
-    urgency: "urgent",
-    type: "fund",
+      "French support for films from developing countries. Special attention to Ukrainian cinema since 2022.",
+    image:
+      "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&h=200&fit=crop",
   },
   {
-    name: "German Federal Film Fund (DFFF)",
-    matchCriteria: ["germany", "production", "feature-film", "co-production"],
-    reason:
-      "Production incentive for films shot in Germany with cultural test requirements. Supports international co-productions.",
-    urgency: "flexible",
+    name: "German Federal Film Fund",
     type: "fund",
+    urgency: "flexible",
+    criteria: ["germany", "production", "feature-film", "co-production"],
+    reason:
+      "Production incentive for films shot in Germany with cultural test requirements.",
+    image:
+      "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=400&h=200&fit=crop",
   },
   {
     name: "Polish Film Institute",
-    matchCriteria: [
+    type: "fund",
+    urgency: "moderate",
+    criteria: [
       "poland",
       "feature-film",
       "documentary",
@@ -349,27 +134,15 @@ const MOCK_FUNDS = [
       "co-production",
     ],
     reason:
-      "Supports Polish cinema and international co-productions involving Polish partners. Active supporter of Ukrainian projects.",
-    urgency: "moderate",
-    type: "fund",
-  },
-  {
-    name: "Czech Film Fund",
-    matchCriteria: [
-      "czech-republic",
-      "feature-film",
-      "documentary",
-      "production",
-      "co-production",
-    ],
-    reason:
-      "Provides production incentives and co-production support. Open to Central and Eastern European collaborations.",
-    urgency: "moderate",
-    type: "fund",
+      "Supports Polish cinema and international co-productions. Active supporter of Ukrainian projects.",
+    image:
+      "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&h=200&fit=crop",
   },
   {
     name: "Visegrad Film Forum",
-    matchCriteria: [
+    type: "fund",
+    urgency: "urgent",
+    criteria: [
       "ukraine",
       "poland",
       "czech-republic",
@@ -378,111 +151,15 @@ const MOCK_FUNDS = [
       "development",
     ],
     reason:
-      "Regional fund supporting collaboration between Central European countries (V4 + Ukraine). Focus on emerging talent.",
+      "Regional fund supporting Central European collaboration (V4 + Ukraine).",
+    image:
+      "https://images.unsplash.com/photo-1574267432644-f02b85200e1c?w=400&h=200&fit=crop",
+  },
+  {
+    name: "Cannes Film Festival",
+    type: "festival",
     urgency: "urgent",
-    type: "fund",
-  },
-  {
-    name: "European Documentary Network (EDN)",
-    matchCriteria: [
-      "documentary",
-      "development",
-      "distribution",
-      "social-issue",
-      "cultural",
-    ],
-    reason:
-      "Specialized support for creative documentaries with international potential. Strong network of industry professionals.",
-    urgency: "moderate",
-    type: "fund",
-  },
-  {
-    name: "Doha Film Institute Grants",
-    matchCriteria: [
-      "feature-film",
-      "documentary",
-      "development",
-      "production",
-      "post-production",
-    ],
-    reason:
-      "International funding for bold, original storytelling from emerging voices. No geographic restrictions.",
-    urgency: "flexible",
-    type: "fund",
-  },
-  {
-    name: "Sundance Institute Documentary Fund",
-    matchCriteria: [
-      "documentary",
-      "development",
-      "production",
-      "social-issue",
-      "cultural",
-    ],
-    reason:
-      "Supports feature-length documentaries on contemporary themes. Strong focus on social justice and human rights.",
-    urgency: "urgent",
-    type: "fund",
-  },
-  {
-    name: "IDFA Bertha Fund",
-    matchCriteria: ["documentary", "development", "production", "social-issue"],
-    reason:
-      "For creative documentaries addressing contemporary human rights issues and social justice topics.",
-    urgency: "moderate",
-    type: "fund",
-  },
-  {
-    name: "Tribeca Film Institute",
-    matchCriteria: [
-      "documentary",
-      "feature-film",
-      "development",
-      "distribution",
-    ],
-    reason:
-      "Supports storytellers from communities underrepresented in media. Focus on social impact.",
-    urgency: "flexible",
-    type: "fund",
-  },
-  {
-    name: "Catapult Film Fund",
-    matchCriteria: ["documentary", "development", "production", "social-issue"],
-    reason:
-      "Supports documentary films about specific social issues including human rights and the environment.",
-    urgency: "moderate",
-    type: "fund",
-  },
-  {
-    name: "Nordisk Film & TV Fond",
-    matchCriteria: [
-      "feature-film",
-      "documentary",
-      "series",
-      "co-production",
-      "production",
-    ],
-    reason:
-      "Nordic fund open to minority co-productions. Strong emphasis on quality and innovation.",
-    urgency: "flexible",
-    type: "fund",
-  },
-  {
-    name: "Film Fund Luxembourg",
-    matchCriteria: [
-      "feature-film",
-      "documentary",
-      "production",
-      "co-production",
-    ],
-    reason:
-      "Supports international co-productions with Luxembourgish participation. Competitive tax incentives.",
-    urgency: "moderate",
-    type: "fund",
-  },
-  {
-    name: "Cannes Film Festival - Cinéfondation",
-    matchCriteria: [
+    criteria: [
       "feature-film",
       "short-film",
       "development",
@@ -490,26 +167,25 @@ const MOCK_FUNDS = [
       "art-house",
     ],
     reason:
-      "Prestigious festival supporting emerging filmmakers through residency and development programs.",
-    urgency: "urgent",
-    type: "festival",
+      "Prestigious festival supporting emerging filmmakers through residency programs.",
+    image:
+      "https://images.unsplash.com/photo-1594908900066-3f47337549d8?w=400&h=200&fit=crop",
   },
   {
     name: "Berlinale Talents",
-    matchCriteria: [
-      "feature-film",
-      "documentary",
-      "development",
-      "experimental",
-    ],
-    reason:
-      "Berlin Film Festival's summit and networking platform for emerging film professionals.",
-    urgency: "urgent",
     type: "festival",
+    urgency: "urgent",
+    criteria: ["feature-film", "documentary", "development", "experimental"],
+    reason:
+      "Berlin Film Festival summit and networking platform for emerging professionals.",
+    image:
+      "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=400&h=200&fit=crop",
   },
   {
-    name: "Venice Biennale College Cinema",
-    matchCriteria: [
+    name: "Venice Biennale College",
+    type: "festival",
+    urgency: "moderate",
+    criteria: [
       "feature-film",
       "development",
       "production",
@@ -517,857 +193,616 @@ const MOCK_FUNDS = [
       "art-house",
     ],
     reason:
-      "International workshop for development and production of micro-budget films by emerging directors.",
+      "International workshop for micro-budget films by emerging directors.",
+    image:
+      "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=400&h=200&fit=crop",
+  },
+  {
+    name: "IDFA Bertha Fund",
+    type: "fund",
     urgency: "moderate",
-    type: "festival",
-  },
-  {
-    name: "Locarno Open Doors",
-    matchCriteria: [
-      "feature-film",
-      "documentary",
-      "development",
-      "co-production",
-    ],
+    criteria: ["documentary", "development", "production", "social-issue"],
     reason:
-      "Co-production platform focusing on countries with limited film infrastructure, including Ukraine.",
-    urgency: "moderate",
-    type: "festival",
+      "For creative documentaries addressing human rights and social justice topics.",
+    image:
+      "https://images.unsplash.com/photo-1533749871411-5e21e14bcc7d?w=400&h=200&fit=crop",
   },
   {
-    name: "Rotterdam Lab",
-    matchCriteria: ["feature-film", "experimental", "development", "art-house"],
-    reason:
-      "International Film Festival Rotterdam's talent development program for innovative filmmakers.",
-    urgency: "flexible",
-    type: "festival",
-  },
-  {
-    name: "Karlovy Vary Works in Progress",
-    matchCriteria: [
-      "feature-film",
-      "documentary",
-      "post-production",
-      "co-production",
-    ],
-    reason:
-      "Platform for Central and Eastern European films in post-production seeking completion funds.",
-    urgency: "moderate",
-    type: "festival",
-  },
-  {
-    name: "Sarajevo CineLink",
-    matchCriteria: [
-      "feature-film",
-      "documentary",
-      "development",
-      "co-production",
-    ],
-    reason:
-      "Regional co-production market focused on Southeast Europe with strong Ukrainian participation.",
-    urgency: "moderate",
-    type: "festival",
-  },
-  {
-    name: "Warsaw Film Festival - Polish Days",
-    matchCriteria: ["feature-film", "documentary", "poland", "co-production"],
-    reason:
-      "Industry platform for Polish and international co-productions, active Ukrainian partner.",
-    urgency: "flexible",
-    type: "festival",
-  },
-  {
-    name: "DOK Leipzig Co-Production Market",
-    matchCriteria: [
+    name: "Sundance Institute Fund",
+    type: "fund",
+    urgency: "urgent",
+    criteria: [
       "documentary",
       "development",
       "production",
-      "co-production",
+      "social-issue",
+      "cultural",
     ],
     reason:
-      "Leading documentary co-production market in Germany, open to international projects.",
-    urgency: "moderate",
-    type: "festival",
+      "Supports feature-length documentaries on contemporary themes and social justice.",
+    image:
+      "https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2?w=400&h=200&fit=crop",
   },
   {
-    name: "Hot Docs Forum",
-    matchCriteria: ["documentary", "development", "production", "distribution"],
-    reason:
-      "North America's largest documentary market and conference. Strong international presence.",
-    urgency: "urgent",
+    name: "Rotterdam Lab",
     type: "festival",
-  },
-  {
-    name: "Sheffield Doc/Fest MeetMarket",
-    matchCriteria: ["documentary", "development", "production", "distribution"],
-    reason:
-      "UK's premier documentary festival with pitching forums and industry marketplace.",
-    urgency: "moderate",
-    type: "festival",
-  },
-  {
-    name: "Visions du Réel Pitching",
-    matchCriteria: ["documentary", "development", "production"],
-    reason:
-      "Swiss documentary festival with multiple pitching platforms for various documentary formats.",
     urgency: "flexible",
-    type: "festival",
+    criteria: ["feature-film", "experimental", "development", "art-house"],
+    reason: "Talent development program for innovative filmmakers at IFFR.",
+    image:
+      "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&h=200&fit=crop",
   },
 ];
 
-/* ===================================
-   Global State
-   =================================== */
-let formElements = {};
-let resultElements = {};
-let favorites = [];
-let allRecommendations = [];
-let currentFilter = "all";
-let currentLanguage = "en";
-const STORAGE_KEY = "fgia_favorites";
+// Logo data for carousel
+const LOGOS = [
+  "Cannes",
+  "Berlinale",
+  "Creative Europe",
+  "Eurimages",
+  "Sundance",
+  "IDFA",
+  "Venice",
+  "Rotterdam",
+];
 
-/* ===================================
-   Initialize Application
-   =================================== */
-function initializeApp() {
+// State Management
+let favorites = [];
+let currentResults = [];
+let currentTypeFilter = "all";
+let currentDeadlineFilter = "all";
+
+// DOM Elements Cache
+const elements = {
+  header: null,
+  landing: null,
+  app: null,
+  tryBtn: null,
+  heartBtn: null,
+  favCount: null,
+  accessForm: null,
+  projectForm: null,
+  resultsGrid: null,
+  placeholder: null,
+  loading: null,
+  favGrid: null,
+  favorites: null,
+  clearBtn: null,
+  typeBtn: null,
+  typeMenu: null,
+  deadlineBtn: null,
+  deadlineMenu: null,
+  burger: null,
+  navLinks: null,
+  typewriter: null,
+};
+
+// ===================================
+// INITIALIZATION
+// ===================================
+
+document.addEventListener("DOMContentLoaded", () => {
   cacheElements();
-  populateDropdowns();
-  attachEventListeners();
-  initBurgerMenu();
-  initLanguageSwitcher();
-  initSearch();
-  initFavorites();
+  initTypewriter();
+  initLogoCarousel();
+  initNavigation();
+  initForms();
   initFilters();
-}
+  initFavorites();
+  populateSelects();
+  loadFavoritesFromStorage();
+});
 
 function cacheElements() {
-  formElements = {
-    form: document.getElementById("recommendationForm"),
-    projectStage: document.getElementById("projectStage"),
-    projectType: document.getElementById("projectType"),
-    nationality: document.getElementById("nationality"),
-    genre: document.getElementById("genre"),
-    language: document.getElementById("language"),
-  };
-
-  resultElements = {
-    placeholder: document.getElementById("resultsPlaceholder"),
-    loading: document.getElementById("loadingState"),
-    container: document.getElementById("resultsContainer"),
-  };
+  elements.header = document.getElementById("header");
+  elements.landing = document.getElementById("landing");
+  elements.app = document.getElementById("app");
+  elements.tryBtn = document.getElementById("btnTry");
+  elements.heartBtn = document.getElementById("heartBtn");
+  elements.favCount = document.getElementById("favCount");
+  elements.accessForm = document.getElementById("accessForm");
+  elements.projectForm = document.getElementById("projectForm");
+  elements.resultsGrid = document.getElementById("resultsGrid");
+  elements.placeholder = document.getElementById("placeholder");
+  elements.loading = document.getElementById("loading");
+  elements.favGrid = document.getElementById("favGrid");
+  elements.favorites = document.getElementById("favorites");
+  elements.clearBtn = document.getElementById("clearBtn");
+  elements.typeBtn = document.getElementById("typeBtn");
+  elements.typeMenu = document.getElementById("typeMenu");
+  elements.deadlineBtn = document.getElementById("deadlineBtn");
+  elements.deadlineMenu = document.getElementById("deadlineMenu");
+  elements.burger = document.getElementById("burger");
+  elements.navLinks = document.getElementById("navLinks");
+  elements.typewriter = document.getElementById("typewriter");
 }
 
-function populateDropdowns() {
-  Object.keys(TAXONOMY).forEach((category) => {
-    const selectElement = formElements[category];
-    TAXONOMY[category].forEach((option) => {
-      const optionElement = document.createElement("option");
-      optionElement.value = option.value;
-      optionElement.textContent = option.label;
-      selectElement.appendChild(optionElement);
+// ===================================
+// TYPEWRITER ANIMATION
+// ===================================
+
+function initTypewriter() {
+  const phrases = [
+    "Smart funding recommendations",
+    "Deadline tracking made easy",
+    "AI-powered matching",
+    "Your film funding assistant",
+  ];
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let delay = 100;
+
+  function type() {
+    const currentPhrase = phrases[phraseIndex];
+
+    if (isDeleting) {
+      elements.typewriter.textContent = currentPhrase.substring(
+        0,
+        charIndex - 1
+      );
+      charIndex--;
+      delay = 50;
+    } else {
+      elements.typewriter.textContent = currentPhrase.substring(
+        0,
+        charIndex + 1
+      );
+      charIndex++;
+      delay = 100;
+    }
+
+    if (!isDeleting && charIndex === currentPhrase.length) {
+      delay = 2000;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      delay = 500;
+    }
+
+    setTimeout(type, delay);
+  }
+
+  type();
+}
+
+// ===================================
+// LOGO CAROUSEL
+// ===================================
+
+function initLogoCarousel() {
+  const container = document.getElementById("logos");
+  if (!container) return;
+
+  // Create logo elements (duplicate for seamless loop)
+  const logosHTML = LOGOS.concat(LOGOS)
+    .map(
+      (name) =>
+        `<div class="logo-item">
+      <svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+        <rect fill="#e2e8f0" width="120" height="60" rx="4"/>
+        <text x="50%" y="50%" fill="#4a5568" font-family="sans-serif" font-size="12" text-anchor="middle" dy=".35em">${name}</text>
+      </svg>
+    </div>`
+    )
+    .join("");
+
+  container.innerHTML = logosHTML;
+}
+
+// ===================================
+// NAVIGATION
+// ===================================
+
+function initNavigation() {
+  // Sticky header shrink on scroll
+  let lastScroll = 0;
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > 100) {
+      elements.header.classList.add("scrolled");
+    } else {
+      elements.header.classList.remove("scrolled");
+    }
+    lastScroll = currentScroll;
+  });
+
+  // Burger menu toggle
+  elements.burger?.addEventListener("click", () => {
+    elements.burger.classList.toggle("active");
+    elements.navLinks.classList.toggle("active");
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      const href = anchor.getAttribute("href");
+      if (href === "#" || href === "#login") return;
+
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        // Close mobile menu
+        elements.burger?.classList.remove("active");
+        elements.navLinks?.classList.remove("active");
+      }
     });
+  });
+
+  // Heart button click
+  elements.heartBtn?.addEventListener("click", () => {
+    if (favorites.length > 0) {
+      elements.favorites?.scrollIntoView({ behavior: "smooth" });
+    }
   });
 }
 
-function attachEventListeners() {
-  formElements.form.addEventListener("submit", handleFormSubmit);
+// ===================================
+// FORMS
+// ===================================
+
+function initForms() {
+  // Early Access Form
+  elements.accessForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // Show loading state
+    const submitBtn = elements.accessForm.querySelector(
+      'button[type="submit"]'
+    );
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = "Processing...";
+    submitBtn.disabled = true;
+
+    // Simulate API call
+    setTimeout(() => {
+      switchToAppMode();
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+
+      // Show all funds by default
+      showAllFunds();
+    }, 1500);
+  });
+
+  // Project Form
+  elements.projectForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const formData = {
+      stage: document.getElementById("stage").value,
+      type: document.getElementById("type").value,
+      nationality: document.getElementById("nationality").value,
+      genre: document.getElementById("genre").value,
+      language: document.getElementById("language").value,
+    };
+
+    findMatches(formData);
+  });
 }
 
-function handleFormSubmit(event) {
-  event.preventDefault();
-  const formData = getFormData();
-  showLoading();
+function switchToAppMode() {
+  document.body.classList.remove("landing-mode");
+  document.body.classList.add("app-mode");
+
+  elements.landing?.classList.add("hidden");
+  elements.app?.classList.remove("hidden");
+  elements.tryBtn?.classList.add("hidden");
+  elements.heartBtn?.classList.remove("hidden");
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function showAllFunds() {
+  currentResults = FUNDS;
+  displayResults(FUNDS);
+  elements.placeholder?.classList.add("hidden");
+}
+
+function findMatches(formData) {
+  // Show loading
+  elements.placeholder?.classList.add("hidden");
+  elements.resultsGrid.classList.add("hidden");
+  elements.loading?.classList.remove("hidden");
+
   setTimeout(() => {
-    const recommendations = generateRecommendations(formData);
-    displayResultsWithFavorites(recommendations);
+    const formValues = Object.values(formData);
+    const matches = FUNDS.filter((fund) => {
+      let score = 0;
+      fund.criteria.forEach((criterion) => {
+        if (formValues.includes(criterion)) score++;
+      });
+      return score >= 2;
+    }).sort((a, b) => {
+      let scoreA = 0,
+        scoreB = 0;
+      a.criteria.forEach((c) => {
+        if (formValues.includes(c)) scoreA++;
+      });
+      b.criteria.forEach((c) => {
+        if (formValues.includes(c)) scoreB++;
+      });
+      return scoreB - scoreA;
+    });
+
+    currentResults = matches;
+    displayResults(matches);
+
+    elements.loading?.classList.add("hidden");
+    elements.resultsGrid?.classList.remove("hidden");
   }, 2000);
 }
 
-function getFormData() {
-  return {
-    projectStage: formElements.projectStage.value,
-    projectType: formElements.projectType.value,
-    nationality: formElements.nationality.value,
-    genre: formElements.genre.value,
-    language: formElements.language.value,
-  };
-}
+// ===================================
+// FILTERS
+// ===================================
 
-function showLoading() {
-  resultElements.placeholder.classList.add("hidden");
-  resultElements.container.classList.add("hidden");
-  resultElements.loading.classList.remove("hidden");
-}
-
-function generateRecommendations(formData) {
-  const recommendations = [];
-  const formValues = Object.values(formData);
-
-  MOCK_FUNDS.forEach((fund) => {
-    let matchScore = 0;
-    fund.matchCriteria.forEach((criterion) => {
-      if (formValues.includes(criterion)) matchScore++;
-    });
-    if (matchScore >= 2) {
-      recommendations.push({ ...fund, matchScore });
-    }
-  });
-
-  recommendations.sort((a, b) => b.matchScore - a.matchScore);
-  return recommendations.slice(0, 5);
-}
-
-/* ===================================
-   Burger Menu
-   =================================== */
-function initBurgerMenu() {
-  const burgerMenu = document.getElementById("burgerMenu");
-  const navLinks = document.getElementById("navLinks");
-
-  if (burgerMenu && navLinks) {
-    burgerMenu.addEventListener("click", () => {
-      burgerMenu.classList.toggle("active");
-      navLinks.classList.toggle("active");
-    });
-
-    const links = navLinks.querySelectorAll(".nav-link");
-    links.forEach((link) => {
-      link.addEventListener("click", () => {
-        burgerMenu.classList.remove("active");
-        navLinks.classList.remove("active");
-      });
-    });
-
-    document.addEventListener("click", (e) => {
-      if (!burgerMenu.contains(e.target) && !navLinks.contains(e.target)) {
-        burgerMenu.classList.remove("active");
-        navLinks.classList.remove("active");
-      }
-    });
-  }
-}
-
-/* ===================================
-   Language Switcher
-   =================================== */
-function initLanguageSwitcher() {
-  const dropdownBtn = document.getElementById("langDropdownBtn");
-  const dropdownContent = document.getElementById("langDropdownContent");
-  const currentLangSpan = document.getElementById("currentLang");
-  const langItems = document.querySelectorAll(".dropdown-item");
-
-  if (!dropdownBtn || !dropdownContent) return;
-
-  dropdownBtn.addEventListener("click", (e) => {
+function initFilters() {
+  // Type filter
+  elements.typeBtn?.addEventListener("click", (e) => {
     e.stopPropagation();
-    dropdownBtn.classList.toggle("active");
-    dropdownContent.classList.toggle("show");
+    elements.typeMenu?.classList.toggle("show");
+    elements.deadlineMenu?.classList.remove("show");
   });
 
+  elements.typeMenu?.querySelectorAll("button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const value = btn.dataset.val;
+      currentTypeFilter = value;
+
+      elements.typeMenu
+        .querySelectorAll("button")
+        .forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const label = btn.textContent;
+      elements.typeBtn.querySelector("span").textContent = label;
+      elements.typeMenu.classList.remove("show");
+
+      applyFilters();
+    });
+  });
+
+  // Deadline filter
+  elements.deadlineBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    elements.deadlineMenu?.classList.toggle("show");
+    elements.typeMenu?.classList.remove("show");
+  });
+
+  elements.deadlineMenu?.querySelectorAll("button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const value = btn.dataset.val;
+      currentDeadlineFilter = value;
+
+      elements.deadlineMenu
+        .querySelectorAll("button")
+        .forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const label = btn.textContent;
+      elements.deadlineBtn.querySelector("span").textContent = label;
+      elements.deadlineMenu.classList.remove("show");
+
+      applyFilters();
+    });
+  });
+
+  // Close dropdowns when clicking outside
   document.addEventListener("click", () => {
-    dropdownBtn.classList.remove("active");
-    dropdownContent.classList.remove("show");
-  });
-
-  dropdownContent.addEventListener("click", (e) => {
-    e.stopPropagation();
-  });
-
-  langItems.forEach((item) => {
-    item.addEventListener("click", () => {
-      langItems.forEach((i) => i.classList.remove("active"));
-      item.classList.add("active");
-
-      currentLanguage = item.getAttribute("data-lang");
-      const langLabel = item.getAttribute("data-label");
-
-      currentLangSpan.textContent = langLabel;
-      dropdownBtn.classList.remove("active");
-      dropdownContent.classList.remove("show");
-
-      updateUILanguage(currentLanguage);
-
-      if (allRecommendations.length > 0) {
-        displayResultsWithFavorites(allRecommendations);
-      }
-      if (favorites.length > 0) {
-        renderFavorites();
-      }
-    });
+    elements.typeMenu?.classList.remove("show");
+    elements.deadlineMenu?.classList.remove("show");
   });
 }
 
-function updateUILanguage(lang) {
-  const title = document.querySelector(".site-title");
-  const description = document.querySelector(".site-description");
-  if (title) title.textContent = UI_TEXT[lang].title;
-  if (description) description.textContent = UI_TEXT[lang].description;
+function applyFilters() {
+  let filtered = currentResults;
 
-  const labels = {
-    projectStage: 'label[for="projectStage"]',
-    projectType: 'label[for="projectType"]',
-    nationality: 'label[for="nationality"]',
-    genre: 'label[for="genre"]',
-    language: 'label[for="language"]',
-  };
-
-  Object.keys(labels).forEach((key) => {
-    const label = document.querySelector(labels[key]);
-    if (label) label.textContent = UI_TEXT[lang][key];
-  });
-
-  const helpers = document.querySelectorAll(".helper-text");
-  const helperKeys = [
-    "helperProjectStage",
-    "helperProjectType",
-    "helperNationality",
-    "helperGenre",
-    "helperLanguage",
-  ];
-  helpers.forEach((helper, index) => {
-    if (helperKeys[index]) {
-      helper.textContent = UI_TEXT[lang][helperKeys[index]];
-    }
-  });
-
-  const selects = {
-    projectStage: "placeholderProjectStage",
-    projectType: "placeholderProjectType",
-    nationality: "placeholderNationality",
-    genre: "placeholderGenre",
-    language: "placeholderLanguage",
-  };
-
-  Object.keys(selects).forEach((key) => {
-    const select = document.getElementById(key);
-    if (select && select.options[0]) {
-      select.options[0].textContent = UI_TEXT[lang][selects[key]];
-    }
-  });
-
-  const submitBtn = document.querySelector(".submit-button");
-  if (submitBtn) submitBtn.textContent = UI_TEXT[lang].submitButton;
-
-  const loginBtn = document.getElementById("loginButton");
-  if (loginBtn) loginBtn.textContent = UI_TEXT[lang].login;
-
-  const placeholder = document.getElementById("resultsPlaceholder");
-  if (placeholder) {
-    const p = placeholder.querySelector("p");
-    if (p) p.textContent = UI_TEXT[lang].placeholderText;
+  if (currentTypeFilter !== "all") {
+    filtered = filtered.filter((f) => f.type === currentTypeFilter);
   }
 
-  document.querySelectorAll("[data-i18n]").forEach((element) => {
-    const key = element.getAttribute("data-i18n");
-    if (UI_TEXT[lang][key]) {
-      element.textContent = UI_TEXT[lang][key];
-    }
+  if (currentDeadlineFilter !== "all") {
+    filtered = filtered.filter((f) => f.urgency === currentDeadlineFilter);
+  }
+
+  displayResults(filtered);
+}
+
+// ===================================
+// DISPLAY RESULTS
+// ===================================
+
+function displayResults(results) {
+  if (!elements.resultsGrid) return;
+
+  if (results.length === 0) {
+    elements.resultsGrid.innerHTML =
+      '<div class="no-results">No matches found. Try adjusting filters.</div>';
+    return;
+  }
+
+  elements.resultsGrid.innerHTML = results
+    .map((fund) => createFundCard(fund))
+    .join("");
+
+  // Attach event listeners to favorite buttons
+  elements.resultsGrid.querySelectorAll(".fav-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const fundName = btn.dataset.name;
+      toggleFavorite(fundName);
+    });
   });
 }
 
-/* ===================================
-   Search Toggle
-   =================================== */
-function initSearch() {
-  const searchToggle = document.getElementById("searchToggle");
-  const searchInput = document.getElementById("navSearchInput");
-  const navSearch = document.getElementById("navSearch");
-  const navLinks = document.getElementById("navLinks");
+function createFundCard(fund) {
+  const isFav = favorites.some((f) => f.name === fund.name);
+  const heartFill = isFav ? "currentColor" : "none";
+  const heartClass = isFav ? "saved" : "";
 
-  if (searchToggle && searchInput) {
-    // Toggle search expansion
-    searchToggle.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const isExpanded = searchInput.classList.contains("expanded");
-
-      if (!isExpanded) {
-        // Expand search
-        searchInput.classList.add("expanded");
-        searchInput.focus();
-      } else {
-        // Collapse search
-        searchInput.classList.remove("expanded");
-        searchInput.value = "";
-        // Reset results
-        resultElements.container.classList.add("hidden");
-        resultElements.placeholder.classList.remove("hidden");
-        const filterSection = document.getElementById("filterSection");
-        if (filterSection) filterSection.classList.add("hidden");
-      }
-    });
-
-    // Search functionality
-    searchInput.addEventListener("input", (e) => {
-      const searchTerm = e.target.value.toLowerCase().trim();
-
-      if (searchTerm.length === 0) {
-        resultElements.container.classList.add("hidden");
-        resultElements.placeholder.classList.remove("hidden");
-        const filterSection = document.getElementById("filterSection");
-        if (filterSection) filterSection.classList.add("hidden");
-        return;
-      }
-
-      if (searchTerm.length < 2) return;
-
-      const filteredFunds = MOCK_FUNDS.filter(
-        (fund) =>
-          fund.name.toLowerCase().includes(searchTerm) ||
-          fund.reason.toLowerCase().includes(searchTerm) ||
-          fund.matchCriteria.some((criteria) => criteria.includes(searchTerm))
-      );
-
-      if (filteredFunds.length > 0) {
-        resultElements.placeholder.classList.add("hidden");
-        const filterSection = document.getElementById("filterSection");
-        if (filterSection) filterSection.classList.remove("hidden");
-        displayResultsWithFavorites(filteredFunds);
-      } else {
-        resultElements.container.innerHTML = `
-                    <div class="results-placeholder">
-                        <p>No funds found for "${searchTerm}". Try different keywords.</p>
-                    </div>
-                `;
-        resultElements.container.classList.remove("hidden");
-        resultElements.placeholder.classList.add("hidden");
-      }
-    });
-
-    // Close search when clicking outside
-    document.addEventListener("click", (e) => {
-      if (
-        !navSearch.contains(e.target) &&
-        searchInput.classList.contains("expanded")
-      ) {
-        searchInput.classList.remove("expanded");
-        searchInput.value = "";
-      }
-    });
-
-    // Prevent closing when clicking inside search
-    navSearch.addEventListener("click", (e) => {
-      e.stopPropagation();
-    });
-  }
+  return `
+    <div class="card">
+      <img src="${fund.image}" alt="${fund.name}" class="card-img" loading="lazy">
+      <div class="card-content">
+        <h4>${fund.name}</h4>
+        <span class="badge badge-${fund.urgency}">${fund.urgency}</span>
+        <p>${fund.reason}</p>
+        <div class="card-actions">
+          <button class="fav-btn ${heartClass}" data-name="${fund.name}">
+            <svg viewBox="0 0 24 24" fill="${heartFill}" stroke="currentColor" stroke-width="2">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </button>
+          <button class="action-btn">Learn More</button>
+        </div>
+      </div>
+    </div>
+  `;
 }
 
-/* ===================================
-   Favorites Management
-   =================================== */
+// ===================================
+// FAVORITES
+// ===================================
+
 function initFavorites() {
-  loadFavoritesFromStorage();
-  renderFavorites();
+  elements.clearBtn?.addEventListener("click", () => {
+    if (confirm("Clear all saved funds?")) {
+      favorites = [];
+      saveFavoritesToStorage();
+      updateFavoritesDisplay();
+      updateHeartButton();
+    }
+  });
+}
 
-  const clearBtn = document.getElementById("clearFavoritesBtn");
-  if (clearBtn) {
-    clearBtn.addEventListener("click", clearAllFavorites);
+function toggleFavorite(fundName) {
+  const fund = FUNDS.find((f) => f.name === fundName);
+  if (!fund) return;
+
+  const index = favorites.findIndex((f) => f.name === fundName);
+
+  if (index > -1) {
+    favorites.splice(index, 1);
+    showNotification("Removed from favorites", "info");
+  } else {
+    favorites.push(fund);
+    showNotification("Added to favorites!", "success");
+    animateHeart();
   }
+
+  saveFavoritesToStorage();
+  updateFavoritesDisplay();
+  updateHeartButton();
+
+  // Update the button in results
+  const btn = elements.resultsGrid?.querySelector(`[data-name="${fundName}"]`);
+  if (btn) {
+    const isFav = favorites.some((f) => f.name === fundName);
+    btn.classList.toggle("saved", isFav);
+    const svg = btn.querySelector("svg");
+    svg.setAttribute("fill", isFav ? "currentColor" : "none");
+  }
+}
+
+function updateHeartButton() {
+  if (!elements.favCount || !elements.heartBtn) return;
+
+  elements.favCount.textContent = favorites.length;
+
+  if (favorites.length > 0) {
+    elements.heartBtn.classList.add("has-items");
+  } else {
+    elements.heartBtn.classList.remove("has-items");
+  }
+}
+
+function animateHeart() {
+  elements.heartBtn?.classList.add("animate");
+  setTimeout(() => {
+    elements.heartBtn?.classList.remove("animate");
+  }, 600);
+}
+
+function updateFavoritesDisplay() {
+  if (!elements.favGrid) return;
+
+  if (favorites.length === 0) {
+    elements.favorites?.classList.add("hidden");
+    return;
+  }
+
+  elements.favorites?.classList.remove("hidden");
+  elements.favGrid.innerHTML = favorites
+    .map((fund) => createFundCard(fund))
+    .join("");
+
+  // Attach event listeners
+  elements.favGrid.querySelectorAll(".fav-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const fundName = btn.dataset.name;
+      toggleFavorite(fundName);
+    });
+  });
 }
 
 function loadFavoritesFromStorage() {
   try {
-    const stored = localStorage.getItem(STORAGE_KEY);
+    const stored = localStorage.getItem("fgia_favorites");
     if (stored) {
       favorites = JSON.parse(stored);
+      updateHeartButton();
+      updateFavoritesDisplay();
     }
-  } catch (error) {
-    console.error("Error loading favorites:", error);
-    favorites = [];
+  } catch (e) {
+    console.error("Error loading favorites:", e);
   }
 }
 
 function saveFavoritesToStorage() {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
-  } catch (error) {
-    console.error("Error saving favorites:", error);
+    localStorage.setItem("fgia_favorites", JSON.stringify(favorites));
+  } catch (e) {
+    console.error("Error saving favorites:", e);
   }
 }
 
-function addToFavorites(fund) {
-  const exists = favorites.find((f) => f.name === fund.name);
+// ===================================
+// POPULATE SELECTS
+// ===================================
 
-  if (!exists) {
-    favorites.push(fund);
-    saveFavoritesToStorage();
-    renderFavorites();
-    showNotification(UI_TEXT[currentLanguage].favoriteAdded);
-    initExportPDF();
-    return true;
-  }
-  return false;
-}
-
-function removeFromFavorites(fundName) {
-  favorites = favorites.filter((f) => f.name !== fundName);
-  saveFavoritesToStorage();
-  renderFavorites();
-  updateAllSaveButtons();
-  showNotification(UI_TEXT[currentLanguage].favoriteRemoved);
-}
-
-function clearAllFavorites() {
-  const confirmMsg =
-    currentLanguage === "es"
-      ? "¿Estás seguro de que quieres borrar todos los favoritos?"
-      : currentLanguage === "ua"
-      ? "Ви впевнені, що хочете видалити всі обрані фонди?"
-      : "Are you sure you want to clear all favorites?";
-
-  if (confirm(confirmMsg)) {
-    favorites = [];
-    saveFavoritesToStorage();
-    renderFavorites();
-    updateAllSaveButtons();
-  }
-}
-
-function updateAllSaveButtons() {
-  const saveButtons = document.querySelectorAll(".save-favorite-btn");
-  saveButtons.forEach((btn) => {
-    const fundName = btn.getAttribute("data-fund-name");
-    const isSaved = isFavorite(fundName);
-
-    if (isSaved) {
-      btn.textContent = UI_TEXT[currentLanguage].removeFavorite;
-      btn.classList.add("saved");
-    } else {
-      btn.textContent = UI_TEXT[currentLanguage].saveButton;
-      btn.classList.remove("saved");
-    }
-  });
-}
-
-function renderFavorites() {
-  const favoritesSection = document.getElementById("favoritesSection");
-  const favoritesContainer = document.getElementById("favoritesContainer");
-  const favoritesEmpty = document.getElementById("favoritesEmpty");
-
-  if (favorites.length === 0) {
-    favoritesSection.classList.add("hidden");
-    favoritesContainer.innerHTML = "";
-    if (favoritesEmpty) favoritesEmpty.classList.remove("hidden");
-  } else {
-    favoritesSection.classList.remove("hidden");
-    if (favoritesEmpty) favoritesEmpty.classList.add("hidden");
-
-    favoritesContainer.innerHTML = "";
-
-    favorites.forEach((fund) => {
-      const item = createFavoriteItem(fund);
-      favoritesContainer.appendChild(item);
-    });
-  }
-}
-
-function createFavoriteItem(fund) {
-  const item = document.createElement("div");
-  item.className = "favorite-item";
-
-  const deadlineClass = `deadline-${fund.urgency}`;
-  const deadlineText = UI_TEXT[currentLanguage][fund.urgency] || fund.urgency;
-
-  item.innerHTML = `
-        <div class="result-header">
-            <h3 class="fund-name">${fund.name}</h3>
-            <div class="favorite-header-right">
-                <span class="deadline-badge ${deadlineClass}">${deadlineText}</span>
-                <button class="favorite-remove-btn" data-fund="${fund.name}" aria-label="Remove from favorites">✕</button>
-            </div>
-        </div>
-        <div class="result-content">
-            <div class="result-section">
-                <div class="result-label">${UI_TEXT[currentLanguage].matchReason}:</div>
-                <p class="result-text visible">${fund.reason}</p>
-            </div>
-        </div>
-    `;
-
-  const removeBtn = item.querySelector(".favorite-remove-btn");
-  removeBtn.addEventListener("click", () => {
-    removeFromFavorites(fund.name);
-  });
-
-  return item;
-}
-
-function isFavorite(fundName) {
-  return favorites.some((f) => f.name === fundName);
-}
-
-/* ===================================
-   Filter Functionality
-   =================================== */
-function initFilters() {
-  const filterButtons = document.querySelectorAll(".filter-button");
-
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      filterButtons.forEach((btn) => btn.classList.remove("active"));
-      button.classList.add("active");
-      currentFilter = button.getAttribute("data-filter");
-      applyFilter(currentFilter);
-    });
-  });
-}
-
-function applyFilter(filter) {
-  if (!allRecommendations || allRecommendations.length === 0) return;
-
-  let filteredResults = allRecommendations;
-
-  if (filter !== "all") {
-    filteredResults = allRecommendations.filter(
-      (fund) => fund.urgency === filter
+function populateSelects() {
+  Object.keys(TAXONOMY).forEach((key) => {
+    const select = document.getElementById(
+      key === "projectStage" ? "stage" : key === "projectType" ? "type" : key
     );
-  }
+    if (!select) return;
 
-  resultElements.container.innerHTML = "";
-
-  if (filteredResults.length === 0) {
-    resultElements.container.innerHTML = `
-            <div class="results-placeholder">
-                <p>No funds match this deadline filter.</p>
-            </div>
-        `;
-  } else {
-    filteredResults.forEach((recommendation) => {
-      const card = createResultCardWithSave(recommendation);
-      resultElements.container.appendChild(card);
+    TAXONOMY[key].forEach((option) => {
+      const opt = document.createElement("option");
+      opt.value = option.value;
+      opt.textContent = option.label;
+      select.appendChild(opt);
     });
-  }
-}
-
-/* ===================================
-   Display Results
-   =================================== */
-function displayResultsWithFavorites(recommendations) {
-  allRecommendations = recommendations;
-  resultElements.loading.classList.add("hidden");
-
-  const filterSection = document.getElementById("filterSection");
-  if (filterSection) filterSection.classList.remove("hidden");
-
-  resultElements.container.innerHTML = "";
-
-  if (recommendations.length === 0) {
-    resultElements.container.innerHTML = `
-            <div class="results-placeholder">
-                <p>${UI_TEXT[currentLanguage].noResults}</p>
-            </div>
-        `;
-  } else {
-    recommendations.forEach((recommendation) => {
-      const card = createResultCardWithSave(recommendation);
-      resultElements.container.appendChild(card);
-    });
-  }
-
-  resultElements.container.classList.remove("hidden");
-
-  if (favorites.length > 0) {
-    initExportPDF();
-  }
-}
-
-function createResultCardWithSave(recommendation) {
-  const card = document.createElement("div");
-  card.className = "result-card";
-
-  const deadlineClass = `deadline-${recommendation.urgency}`;
-  const deadlineText =
-    UI_TEXT[currentLanguage][recommendation.urgency] || recommendation.urgency;
-  const isSaved = isFavorite(recommendation.name);
-  const saveButtonText = isSaved
-    ? UI_TEXT[currentLanguage].removeFavorite
-    : UI_TEXT[currentLanguage].saveButton;
-  const saveButtonClass = isSaved ? "saved" : "";
-
-  const mockDeadlines = {
-    urgent: "2026-03-31",
-    moderate: "2026-06-30",
-    flexible: "2026-09-30",
-  };
-  const deadline = mockDeadlines[recommendation.urgency];
-
-  const uniqueId = `info-${Math.random().toString(36).substr(2, 9)}`;
-
-  card.innerHTML = `
-        <div class="result-header">
-            <h3 class="fund-name">${recommendation.name}</h3>
-            <span class="deadline-badge ${deadlineClass}">${deadlineText}</span>
-        </div>
-        <div class="result-content">
-            <div class="result-section">
-                <div style="display: flex; align-items: center;">
-                    <span class="result-label">${UI_TEXT[currentLanguage].matchReason}</span>
-                    <button class="info-toggle" data-target="${uniqueId}" aria-label="Toggle details">i</button>
-                </div>
-                <p class="result-text" id="${uniqueId}">${recommendation.reason}</p>
-            </div>
-        </div>
-        <div class="card-actions">
-            <button class="save-favorite-btn ${saveButtonClass}" data-fund-name="${recommendation.name}">
-                ${saveButtonText}
-            </button>
-            <button class="calendar-btn" data-fund-name="${recommendation.name}" data-deadline="${deadline}">
-                📅 Add to Calendar
-            </button>
-        </div>
-    `;
-
-  // Info toggle
-  const infoToggle = card.querySelector(".info-toggle");
-  const resultText = card.querySelector(`#${uniqueId}`);
-  infoToggle.addEventListener("click", () => {
-    resultText.classList.toggle("visible");
   });
-
-  // Save button
-  const saveBtn = card.querySelector(".save-favorite-btn");
-  saveBtn.addEventListener("click", () => {
-    if (isFavorite(recommendation.name)) {
-      removeFromFavorites(recommendation.name);
-    } else {
-      addToFavorites(recommendation);
-      saveBtn.textContent = UI_TEXT[currentLanguage].removeFavorite;
-      saveBtn.classList.add("saved");
-    }
-  });
-
-  // Calendar button
-  const calendarBtn = card.querySelector(".calendar-btn");
-  calendarBtn.addEventListener("click", () => {
-    addToGoogleCalendar(recommendation.name, deadline);
-  });
-
-  return card;
 }
 
-/* ===================================
-   Export to PDF
-   =================================== */
-function initExportPDF() {
-  const favoritesSection = document.getElementById("favoritesSection");
-  if (favoritesSection && !document.getElementById("exportPdfBtn")) {
-    const exportBtn = document.createElement("button");
-    exportBtn.id = "exportPdfBtn";
-    exportBtn.className = "export-pdf-btn";
-    exportBtn.textContent = "📄 Export to PDF";
-    exportBtn.style.cssText = `
-            margin-top: var(--spacing-md);
-            padding: var(--spacing-sm) var(--spacing-lg);
-            background-color: var(--color-accent);
-            color: white;
-            border: none;
-            border-radius: var(--border-radius);
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        `;
+// ===================================
+// NOTIFICATIONS
+// ===================================
 
-    exportBtn.addEventListener("click", exportToPDF);
-    exportBtn.addEventListener("mouseenter", function () {
-      this.style.backgroundColor = "var(--color-accent-hover)";
-    });
-    exportBtn.addEventListener("mouseleave", function () {
-      this.style.backgroundColor = "var(--color-accent)";
-    });
-
-    favoritesSection.appendChild(exportBtn);
-  }
-}
-
-function exportToPDF() {
-  if (favorites.length === 0) {
-    alert("No favorites to export. Please save some funds first.");
-    return;
-  }
-
-  let pdfContent = "MY FILM FUND RECOMMENDATIONS\n";
-  pdfContent += "=".repeat(50) + "\n\n";
-  pdfContent += `Generated: ${new Date().toLocaleDateString()}\n\n`;
-
-  favorites.forEach((fund, index) => {
-    pdfContent += `${index + 1}. ${fund.name}\n`;
-    pdfContent += `   Urgency: ${fund.urgency}\n`;
-    pdfContent += `   ${fund.reason}\n\n`;
-  });
-
-  const blob = new Blob([pdfContent], { type: "text/plain" });
-  const url = window.URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `film-funds-${new Date().toISOString().split("T")[0]}.txt`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  window.URL.revokeObjectURL(url);
-
-  showNotification("Favorites exported successfully!");
-}
-
-/* ===================================
-   Calendar Integration
-   =================================== */
-function addToGoogleCalendar(fundName, deadline) {
-  const startDate = deadline.replace(/-/g, "") + "T090000Z";
-  const endDate = deadline.replace(/-/g, "") + "T170000Z";
-
-  const title = encodeURIComponent(`Deadline: ${fundName}`);
-  const details = encodeURIComponent(
-    `Application deadline for ${fundName}. Visit official website to apply.`
-  );
-
-  const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDate}/${endDate}&details=${details}`;
-
-  window.open(url, "_blank");
-}
-
-/* ===================================
-   Notification System
-   =================================== */
-function showNotification(message) {
+function showNotification(message, type = "info") {
   const notification = document.createElement("div");
-  notification.className = "notification";
+  notification.className = `notification notification-${type}`;
   notification.textContent = message;
-
-  notification.style.cssText = `
-        position: fixed;
-        top: 80px;
-        right: 20px;
-        background-color: var(--color-accent);
-        color: white;
-        padding: 1rem 1.5rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        z-index: 1000;
-        animation: slideIn 0.3s ease;
-        max-width: 300px;
-    `;
-
   document.body.appendChild(notification);
 
+  setTimeout(() => notification.classList.add("show"), 10);
+
   setTimeout(() => {
-    notification.style.animation = "slideOut 0.3s ease";
+    notification.classList.remove("show");
     setTimeout(() => notification.remove(), 300);
   }, 3000);
 }
-
-const notificationStyle = document.createElement("style");
-notificationStyle.textContent = `
-    @keyframes slideIn {
-        from { transform: translateX(400px); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-    }
-    @keyframes slideOut {
-        from { transform: translateX(0); opacity: 1; }
-        to { transform: translateX(400px); opacity: 0; }
-    }
-`;
-document.head.appendChild(notificationStyle);
-
-/* ===================================
-   Start Application
-   =================================== */
-document.addEventListener("DOMContentLoaded", initializeApp);
