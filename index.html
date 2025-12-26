@@ -15,96 +15,97 @@
     <header class="site-header">
       <nav class="main-nav">
         <div class="nav-container">
-          <!-- Logo -->
+          <!-- Logo (Always Visible) -->
           <div class="nav-logo">
             <a href="index.html" class="logo-link">
               <div class="logo-placeholder">FGIA</div>
             </a>
           </div>
 
-          <!-- Desktop Navigation Links -->
-          <ul class="nav-links desktop-only" id="navLinksDesktop">
-            <li><a href="#funds" class="nav-link">Funds</a></li>
-            <li><a href="#festivals" class="nav-link">Festivals</a></li>
-            <li><a href="#resources" class="nav-link">Resources</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-          </ul>
-
-          <!-- Search Bar - Magnifying Glass -->
-          <div class="nav-search" id="navSearch">
-            <button class="search-toggle" id="searchToggle" aria-label="Search">
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <circle cx="11" cy="11" r="8" />
-                <path d="m21 21-4.35-4.35" />
-              </svg>
-            </button>
-            <input
-              type="text"
-              id="navSearchInput"
-              placeholder="Search funds, festivals..."
-              class="search-input"
-              aria-label="Search"
-            />
-          </div>
-
-          <!-- Language Switcher -->
-          <div class="language-switcher">
-            <div class="dropdown">
-              <button class="dropdown-button" id="langDropdownBtn">
-                <span id="currentLang">ENG</span>
-                <svg
-                  width="12"
-                  height="12"
-                  viewBox="0 0 12 12"
-                  fill="currentColor"
-                >
-                  <path d="M2 4l4 4 4-4z" />
-                </svg>
-              </button>
-              <div class="dropdown-content" id="langDropdownContent">
-                <button
-                  class="dropdown-item active"
-                  data-lang="en"
-                  data-label="ENG"
-                >
-                  English
-                </button>
-                <button class="dropdown-item" data-lang="es" data-label="SPA">
-                  Español
-                </button>
-                <button class="dropdown-item" data-lang="ua" data-label="UKR">
-                  Українська
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Login Button -->
-          <a href="#login" class="nav-link login-button" id="loginButton"
-            >Login</a
-          >
-
-          <!-- Burger Menu (Mobile) -->
-          <button class="burger-menu" id="burgerMenu" aria-label="Toggle menu">
-            <span class="burger-line"></span>
-            <span class="burger-line"></span>
-            <span class="burger-line"></span>
-          </button>
-
-          <!-- Mobile Navigation Links -->
+          <!-- Navigation Links (Hidden when search is active) -->
           <ul class="nav-links" id="navLinks">
             <li><a href="#funds" class="nav-link">Funds</a></li>
             <li><a href="#festivals" class="nav-link">Festivals</a></li>
             <li><a href="#resources" class="nav-link">Resources</a></li>
             <li><a href="#about" class="nav-link">About</a></li>
           </ul>
+
+          <!-- Right Side: Search + Language + Login -->
+          <div class="nav-right">
+            <!-- Search -->
+            <div class="nav-search" id="navSearch">
+              <button
+                class="search-toggle"
+                id="searchToggle"
+                aria-label="Search"
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.35-4.35" />
+                </svg>
+              </button>
+              <input
+                type="text"
+                id="navSearchInput"
+                placeholder="Search funds, festivals..."
+                class="search-input"
+                aria-label="Search"
+              />
+            </div>
+
+            <!-- Language Switcher -->
+            <div class="language-switcher">
+              <div class="dropdown">
+                <button class="dropdown-button" id="langDropdownBtn">
+                  <span id="currentLang">ENG</span>
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="currentColor"
+                  >
+                    <path d="M2 4l4 4 4-4z" />
+                  </svg>
+                </button>
+                <div class="dropdown-content" id="langDropdownContent">
+                  <button
+                    class="dropdown-item active"
+                    data-lang="en"
+                    data-label="ENG"
+                  >
+                    English
+                  </button>
+                  <button class="dropdown-item" data-lang="es" data-label="SPA">
+                    Español
+                  </button>
+                  <button class="dropdown-item" data-lang="ua" data-label="UKR">
+                    Українська
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Login Button -->
+            <a href="#login" class="login-button" id="loginButton">Login</a>
+
+            <!-- Burger Menu (Mobile Only) -->
+            <button
+              class="burger-menu"
+              id="burgerMenu"
+              aria-label="Toggle menu"
+            >
+              <span class="burger-line"></span>
+              <span class="burger-line"></span>
+              <span class="burger-line"></span>
+            </button>
+          </div>
         </div>
       </nav>
 
