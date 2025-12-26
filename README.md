@@ -1,8 +1,10 @@
 # FGIA - Film Funding Intelligence Assistant
 
 ![Version](https://img.shields.io/badge/version-0.2.0--beta-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
 ![Status](https://img.shields.io/badge/status-work--in--progress-yellow)
+![HTML](https://img.shields.io/badge/HTML-277_lines-orange)
+![CSS](https://img.shields.io/badge/CSS-1375_lines-blue)
+![JavaScript](https://img.shields.io/badge/JavaScript-808_lines-yellow)
 
 > **AI-powered film funding recommendations for European filmmakers**
 
